@@ -1,0 +1,11 @@
+{
+  "name": "price_tracker_web",
+  "version": "1.0.0",
+  "description": "A website that will keep track of prices of certain websites.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

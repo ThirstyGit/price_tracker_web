@@ -11,3 +11,26 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
   console.log("Database connected");
 });
+
+// Creating Schemas.
+// Creating a Schema for Users.
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    required: true,
+  }
+});
+
+module.exports.User = mongoose.model("user", userSchema);

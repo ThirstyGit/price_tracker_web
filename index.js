@@ -5,14 +5,16 @@ const app = express();
 
 // routes
 const baseRouter = require('./routes/base');
+const authRouter = require('./routes/auth');
 
 // app configs
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-
+// All routes for our website.
 app.use('/', baseRouter);
+app.use('/auth', authRouter);
 
 // redirecting every other requests as error
 app.use((req, res) => {

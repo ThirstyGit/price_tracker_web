@@ -1,4 +1,6 @@
 const express = require('express');
+const sessions = require("express-session");
+require('dotenv').config(); // Getting all the environment variables.
 
 // app
 const app = express();
@@ -11,6 +13,15 @@ const authRouter = require('./routes/auth');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Setting up session.
+app.use(sessions({
+    secret: process.env.SESSION_SECRET, // Need a better secret key.
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 1 // 1 hour
+    }
+}));
 
 // All routes for our website.
 app.use('/', baseRouter);

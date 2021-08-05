@@ -1,6 +1,10 @@
+// All module imports.
 const express = require('express');
 const sessions = require("express-session");
 require('dotenv').config(); // Getting all the environment variables.
+
+// Importing middleware modules.
+const { authenticate } = require('./middleware/login');
 
 // app
 const app = express();
@@ -22,6 +26,7 @@ app.use(sessions({
         maxAge: 1000 * 60 * 60 * 1 // 1 hour
     }
 }));
+app.use(authenticate);
 
 // All routes for our website.
 app.use('/', baseRouter);

@@ -1,18 +1,36 @@
+// All module imports.
 const express = require('express');
+const sessions = require("express-session");
+require('dotenv').config(); // Getting all the environment variables.
+
+// Importing middleware modules.
+const { authenticate } = require('./middleware/login');
 
 // app
 const app = express();
 
 // routes
 const baseRouter = require('./routes/base');
+const authRouter = require('./routes/auth');
 
 // app configs
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Setting up session.
+app.use(sessions({
+    secret: process.env.SESSION_SECRET, // Need a better secret key.
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 1 // 1 hour
+    }
+}));
+app.use(authenticate);
 
-
+// All routes for our website.
 app.use('/', baseRouter);
+app.use('/auth', authRouter);
 
 // redirecting every other requests as error
 app.use((req, res) => {

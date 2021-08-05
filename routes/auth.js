@@ -31,4 +31,17 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.post('/login', async (req, res) => {
+  // Try to find a user with that email.
+  const user = await User.findOne({ email: req.body.email});
+  // if the email is found, make sure the password matches.
+  if (user && bcrypt.compareSync(req.body.password, user.password)) {
+    req.session.userId = user._id;
+    res.redirect('/');
+  }
+  else {
+    res.redirect('/auth/login');
+  }
+});
+
 module.exports = router;

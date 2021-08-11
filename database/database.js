@@ -1,6 +1,6 @@
 // imports
 const mongoose = require("mongoose");
-require('dotenv').config(); // Getting all the environment variables.
+require("dotenv").config(); // Getting all the environment variables.
 
 // Database connection
 mongoose.connect(
@@ -31,7 +31,33 @@ const userSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true,
+  },
+});
+
+const productSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  website: {
+    type: String,
+    required: true,
+  },
+  link: {
+    type: String,
+    required: true
+  },
+  price_history: {
+    price: {
+      type: String,
+      required: true
+    },
+    timestamp: {
+      type: Date,
+      default: Date.now
+    }
   }
 });
 
 module.exports.User = mongoose.model("user", userSchema);
+module.exports.Products = mongoose.model("product", productSchema);

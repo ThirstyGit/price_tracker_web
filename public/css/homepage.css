@@ -10,6 +10,10 @@ a{
     text-decoration: none;
     color: black;
 }
+a:hover{
+    color:blue;
+
+}
 .nav{
     background-color:khaki;
     display: flex;
@@ -41,4 +45,5 @@ a{
     padding: 0.5em 0.5em;
     justify-content: space-around;
 }
+
 

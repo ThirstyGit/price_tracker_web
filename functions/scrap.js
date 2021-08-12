@@ -27,16 +27,31 @@ async function scrap(url, params, cb) {
   // insert them to the database.
   const website = url.split("https://")[1].split("/")[0];
   
+  let currProducts = await Products.find();
+  // console.log(currProducts);
+
   if(productData.length) {
-    productData.forEach(data => {
-      Products({
-        name: data.name,
-        website, // should be name of website. E.G. Steam, Amazon,
-        link: url,
-        price_history: {
-            price: data.price
-          }
-      }).save();
+    productData.forEach(async data => {
+      
+      // const currProduct = await Products.find({name: data.name});
+      // const alreadyThere = currProduct.length !== 0;
+
+      // if (alreadyThere) {
+      //   console.log("5656");
+      //   currProduct[0].price_history.push({price: data.price});
+      //   console.log(currProduct[0].price_history);
+      //   // currProduct[0].save();
+      // } else {
+
+        Products({
+          name: data.name,
+          website, // should be name of website. E.G. Steam, Amazon,
+          link: url,
+          price_history: {
+              price: data.price
+            }
+        }).save();
+    // }
     });
   }
   

@@ -7,6 +7,11 @@
     <title>Price Tracking</title>
 </head>
 <body>
-    
+    <h3>Price History</h3>
+    <ul>
+    <% products.forEach((single) => {
+        %> <li><%= single.name %></li> <%
+    }); %>
+    </ul>
 </body>
 </html>

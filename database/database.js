@@ -47,7 +47,8 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  price_history: {
+  price_history: [{
+    _id: false,
     price: {
       type: String,
       required: true
@@ -56,7 +57,7 @@ const productSchema = new mongoose.Schema({
       type: Date,
       default: Date.now
     }
-  }
+  }]
 });
 
 module.exports.User = mongoose.model("user", userSchema);

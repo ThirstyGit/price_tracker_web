@@ -31,6 +31,10 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.get('/login', (req, res) => {
+  res.render('login');
+})
+
 router.post('/login', async (req, res) => {
   // Try to find a user with that email.
   const user = await User.findOne({ email: req.body.email});

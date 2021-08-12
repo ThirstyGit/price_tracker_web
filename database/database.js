@@ -8,7 +8,7 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
+db.on("error", console.error.bind(console, "Connection ERROR :(:"));
 db.once("open", function () {
   console.log("Database connected");
 });

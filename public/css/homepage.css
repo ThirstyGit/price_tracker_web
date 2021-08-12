@@ -1,0 +1,20 @@
+body{
+    background-color: beige;
+}
+.nav{
+    border: 0;
+    height: 2cm;
+    width: 100%;
+    background-color:khaki;
+}
+.nav2{
+    border: 0;
+    height: 1cm;
+    width: 100%;
+    background-color:white;
+}
+.search-bar{
+    font-size: 25px;
+    height: 1.5cm;
+    width: 100%;
+}

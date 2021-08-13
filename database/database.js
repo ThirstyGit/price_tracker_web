@@ -48,7 +48,7 @@ const productSchema = new mongoose.Schema({
     required: true
   },
   price_history: [{
-    _id: false,
+    // _id: false,
     price: {
       type: String,
       required: true

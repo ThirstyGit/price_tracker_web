@@ -14,6 +14,10 @@ a:hover{
     color:blue;
 
 }
+.nav-container{
+    position: sticky;
+    top:0px;
+}
 .nav{
     background-color:khaki;
     display: flex;

@@ -9,19 +9,22 @@
     <!-- <link rel="stylesheet" type="text/css" href="/css/homepagebody.css"> -->
 </head>
 <body>
+
     <h2>Login page</h2>
-    <form id=login  method="get"  action="login.ejs">
-        <legend class="legend">Log IN</legend>
-        <div class=" input-container massage-container">
-            <level for="email" class="form_level"><b>Email</b></label> 
-            <input class="input" id="email" type="email" placeholder="Email">
-        </div>
-        <div class="input-container massage-container">
-            <label for="password" class="form_level"><b>Password</b></label>
-            <input class="input" name="password" id="password" type="password" placeholder="Password">
-        </div>
-        <button class="login-btn" type="button">Log In</button>
-        <button class="signup-btn" type="button">Sign Up</button>    
-    </form>
+    <div class="center">
+        <form id="login" class="loginform"  method="get"  action="login.ejs">
+            <legend class="legend">Log In</legend>
+            <div class=" input-container massage-container">
+                <level for="email" class="form-level"><b>Email</b></label> 
+                <input class="input" id="email" type="email" placeholder="Email">
+            </div>
+            <div class="input-container massage-container">
+                <label for="password" class="form-level"><b>Password</b></label>
+                <input class="input" name="password" id="password" type="password" placeholder="Password">
+            </div>
+            <button class="login-btn" type="button">Log In</button>
+            <button class="signup-btn" type="button">Sign Up</button>    
+        </form>
+    </div>
 </body>
 </html>

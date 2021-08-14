@@ -8,18 +8,23 @@
   <title>Admin Panel</title>
 </head>
 <body class="body">
-  <head>
-    <h1 class="main-title">Admin Panel</h1>
-  </head>
-  <main class="main">
-    <form class="form" action="/auth/newproduct" method="POST">
-      <legend class="legend">New Product to track</legend>
-      <hr class="hr-full-width">
-      <input class="input" type="text" name="url" placeholder="url">
-      <input class="input" type="text" name="name" placeholder="name">
-      <input class="input" type="text" name="price" placeholder="price">
-      <button class="btn btn-form">SUBMIT</button>
-    </form>
+  <header class="header">
+    <h2 class="main-title">Admin Panel</h2>
+  </header>
+  <main class="main-wrapper">
+    <nav class="sidebar">
+      <a class="sidebar-anchor" href="#">Add New Product</a>
+    </nav>
+    <div class="main">
+      <form class="form" action="/auth/newproduct" method="POST">
+        <legend class="legend">New Product to track</legend>
+        <hr class="hr-full-width">
+        <input class="input" type="text" name="url" placeholder="url">
+        <input class="input" type="text" name="name" placeholder="name">
+        <input class="input" type="text" name="price" placeholder="price">
+        <button class="btn btn-form">SUBMIT</button>
+      </form>
+    </div>
   </main>
   <script type="text/javascript" src="/js/admin.js"></script>
 </body>

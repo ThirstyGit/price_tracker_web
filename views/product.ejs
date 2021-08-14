@@ -18,7 +18,15 @@
 </head>
 
 <body>
-    <div class="chart-container" style="position: relative; height:10vh; width:60vw">
+    <div class="chart-container" style="position: relative; height:60vh; width:60vw">
+        <a role="button" type="button" class="btn btn-danger" href="/tracking">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+            </svg>
+            Go back
+        </a>
+        <h3><%= title %></h3>
+        <p class="text-muted">recent price history</p>
 
         <canvas id="priceGraph" width="200" height="200"></canvas>
 
@@ -26,10 +34,12 @@
 </body>
 <script>
     var ctx = document.getElementById('priceGraph').getContext('2d');
-    let prices = <%- JSON.stringify(prices) %>
-    let times = <%- JSON.stringify(times) %>
+    let prices = <%- JSON.stringify(prices) %>; // shed blood figuring this wired ejs syntax! 
+    let times = <%- JSON.stringify(times) %>; // needs to be changed to a full date
+    let MAX = Math.max.apply(Math, prices) + Math.max.apply(Math, prices) * 0.3; // calculating max
+
     
-    console.log(prices, times);
+    console.log(prices, times, MAX);
     // let priceChart = new Chart(ctx, {
     //     type: 'line',
     //     labels: <%= times %>,
@@ -42,33 +52,26 @@
     data: {
         labels: times,
         datasets: [{
-            label: '# of Votes',
+            label: 'Price Fluctutation',
             data: prices,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                `rgba(${Math.floor(Math.random() * 180 + 30)}, ${Math.floor(Math.random() * 180 + 30)}, ${Math.floor(Math.random() * 180 + 30)}, 0.2)`,
+                
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+            `rgba(${Math.floor(Math.random() * 180 + 30)}, ${Math.floor(Math.random() * 180 + 30)}, ${Math.floor(Math.random() * 180 + 30)})`,
+                
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
+        maintainAspectRatio: false,
         scales: {
            
             yAxes: {
                 min: 0,
-                max: 50
+                max: MAX
   }
         }
     }

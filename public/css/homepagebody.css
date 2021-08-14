@@ -1,0 +1,26 @@
+/*............mainbody...........*/
+.h1-tag{
+    padding-top: 1em;
+    display: inline-block;
+}
+
+.main-body{
+    display: flex;
+    /*flex-direction: column;*/
+    align-items: center;
+    padding: 2em 1em;
+    justify-content: space-around;
+ }
+ .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0em;
+    max-width: 80em;
+   overflow: hidden;
+    justify-content: space-around;
+ }
+ .prduct-image {
+    width: 10em;
+    height: 12em;
+    margin-bottom: 1em;
+ }

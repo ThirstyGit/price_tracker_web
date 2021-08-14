@@ -1,42 +1,4 @@
-/* .legend{
-    font-family: sans-serif;
-    font-size: 1.5rem;
-    color:rgb(0, 22, 150);
-    text-align: center;
-    display: block;
-    padding-inline-start: 2px;
-    padding-inline-end: 2px;
-    margin-bottom: 1.2rem;
-   
 
-}
-* {
-    margin: 0px;
-    padding: 0px;
-    font-family: sans-serif;
-    text-align: center;
- }
- body{
-    background-color: rgb(166, 168, 156);
-}
-
-/* .login-btn{
-    width: 100%;
-    font-size: 1.5rem;
-    background-color: rgb(221, 177, 247);
-    letter-spacing: 1px;
-    border: 2px solid;
-    padding: .5rem;
-}
-.signup-btn{
-    width: 100%;
-    font-size: 1.5rem;
-    background-color: rgb(157, 201, 209);
-    letter-spacing: 1px;
-    border: 2px solid;
-    padding: .5rem;
-}
- */ 
  .legend{
     font-family: sans-serif;
     font-size: 1.5rem;
@@ -56,7 +18,7 @@
     text-align: center;
  }
  body{
-    background-color: rgb(159, 218, 190);
+    background-color: rgb(199, 218, 209);
 }
 .center{
     min-height: 50vh;
@@ -70,15 +32,16 @@
     padding: 5rem;
     border-radius: .4rem;
     box-shadow: 0 0 20px -5px;
-    background-color: rgb(218, 205, 219);
+    background-color: rgb(241, 229, 241);
     /* background-color: ; */
-    width: 50%;
+    width: 40%;
+    
     max-width: 50rem;
 }
 .login-btn{
     width: 100%;
     font-size: 1.5rem;
-    background-color: rgb(247, 177, 200);
+    background-color: rgb(199, 235, 236);
     letter-spacing: 1px;
     border: 2px solid;
     padding: .5rem;
@@ -96,7 +59,7 @@
     font-family: sans-serif;
     width: 100%;
 }
-/* .input , input-container{
+.input , input-container{
     box-sizing: border-box;
     font-family: sans-serif;
     margin-bottom: 1.2rem;
@@ -114,4 +77,4 @@ input[type="email" i] {
 input[type="password" i] {
     -webkit-text-security: disc !important;
     padding: 2px 2px;
-} */
+}

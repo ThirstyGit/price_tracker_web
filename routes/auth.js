@@ -5,6 +5,10 @@ const bcrypt = require("bcrypt");
 // Importing database modules.
 const { User } = require('../database/database.js');
 
+router.get('/register', (req, res) => {
+  res.render('register');
+})
+
 router.post("/register", async (req, res) => {
   // Making sure the email is not already registered.
   const user = await User.findOne({ email: req.body.email });

@@ -11,15 +11,15 @@
 <body>
     <h2>SIGN UP page</h2>
     <div class="center">
-        <form id="signup" class="signupform"  method="post"  action="/auth/login">
+        <form id="signup" class="signupform"  method="post"  action="/auth/register">
             <legend class="legend">Sign Up</legend>
             <div class=" input-container massage-container">
                 <level for="name" class="form-level"><b>Name</b></label> 
-                <input class="input" id="name" type="name" placeholder="Name">
+                <input name="name" class="input" id="name" type="name" placeholder="Name">
             </div>
             <div class=" input-container massage-container">
                 <level for="email" class="form-level"><b>Email</b></label> 
-                <input class="input" id="email" type="email" placeholder="Email">
+                <input class="input" name="email" id="email" type="email" placeholder="Email">
             </div>
             <!-- <div class=" input-container massage-container">
                 <level for="" class="form-level"><b>Email</b></label> 
@@ -33,6 +33,12 @@
                 <button class="signup-btn" type="submit">Sign Up</button> 
             </div>  
         </form>
+        <div>
+          <a href="/auth/login">
+            <button class="login-btn" type="submit">Log In</button> 
+         </a>
+        </div>
+
     </div>
 </body>
 </html>

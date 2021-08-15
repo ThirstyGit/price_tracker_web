@@ -12,11 +12,11 @@
 
     <h2>Login page</h2>
     <div class="center">
-        <form id="login" class="loginform"  method="POST"  action="/auth/signup">
+        <form id="login" class="loginform"  method="POST"  action="/auth/login">
             <legend class="legend">Log In</legend>
             <div class=" input-container massage-container">
                 <level for="email" class="form-level"><b>Email</b></label> 
-                <input class="input" id="email" type="email" placeholder="Email">
+                <input name="email" class="input" id="email" type="email" placeholder="Email">
             </div>
             <div class="input-container massage-container">
                 <label for="password" class="form-level"><b>Password</b></label>
@@ -25,10 +25,12 @@
             <div>
                 <button class="login-btn" type="submit">Log In</button>
             </div>
-            <div>
-                <button class="signup-btn" type="submit">Sign Up</button>  
-            </div>  
         </form>
+        <div>
+            <a href="/auth/register">
+                <button class="signup-btn" type="submit">Sign Up</button>  
+            </a>
+        </div>  
     </div>
 </body>
 </html>

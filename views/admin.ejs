@@ -13,18 +13,24 @@
   </header>
   <main class="main-wrapper">
     <nav class="sidebar">
-      <a class="sidebar-anchor" href="#">Add New Product</a>
+      <a class="sidebar-anchor">Add New Product</a>
+      <a class="sidebar-anchor">Scrap</a>
     </nav>
     <div class="main">
-      <form class="form" action="/admin/newproduct" method="POST">
-        <legend class="legend">New Product to track</legend>
-        <hr class="hr-full-width">
-        <input class="input" type="text" name="url" placeholder="url">
-        <input class="input" type="text" name="name" placeholder="Name Selector">
-        <input class="input" type="text" name="price" placeholder="Price Selector">
-        <input class="input" type="text" name="image" placeholder="Image Selector">
-        <button class="btn btn-form">SUBMIT</button>
-      </form>
+      <div class="main-element" id="add-new-product">
+        <form class="form" action="/admin/newproduct" method="POST">
+          <legend class="legend">New Product to track</legend>
+          <hr class="hr-full-width">
+          <input class="input" type="text" name="url" placeholder="url">
+          <input class="input" type="text" name="name" placeholder="Name Selector">
+          <input class="input" type="text" name="price" placeholder="Price Selector">
+          <input class="input" type="text" name="image" placeholder="Image Selector">
+          <button class="btn btn-form">SUBMIT</button>
+        </form>
+      </div>
+      <div class="main-element hidden" id="scrap">
+        <button class="btn">Start Scrap</button>
+      </div>
     </div>
   </main>
   <script type="text/javascript" src="/js/admin.js"></script>

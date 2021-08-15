@@ -85,7 +85,6 @@
     border: 0;
     outline: none;
 }
-
 .form-btn:hover,
 .form-btn:focus {
   background-color: rgba(199, 235, 236, 0.8);

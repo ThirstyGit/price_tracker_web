@@ -4,6 +4,9 @@
     font-family: sans-serif;
     text-align: center;
  }
+ .header{
+    padding: 1em 1em;
+}
 
 .legend{
     font-family: sans-serif;
@@ -14,9 +17,6 @@
     padding-bottom: 20px;
     /* padding-inline-end: 2px; */
     margin-bottom: 1.2rem;
-}
-.header{
-    padding: 1em 1em;
 }
 
  body{

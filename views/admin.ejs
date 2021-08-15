@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/admin.css">
+  <title>Admin Panel</title>
+</head>
+<body class="body">
+  <header class="header">
+    <h2 class="main-title">Admin Panel</h2>
+  </header>
+  <main class="main-wrapper">
+    <nav class="sidebar">
+      <a class="sidebar-anchor" href="#">Add New Product</a>
+    </nav>
+    <div class="main">
+      <form class="form" action="/auth/newproduct" method="POST">
+        <legend class="legend">New Product to track</legend>
+        <hr class="hr-full-width">
+        <input class="input" type="text" name="url" placeholder="url">
+        <input class="input" type="text" name="name" placeholder="name">
+        <input class="input" type="text" name="price" placeholder="price">
+        <button class="btn btn-form">SUBMIT</button>
+      </form>
+    </div>
+  </main>
+  <script type="text/javascript" src="/js/admin.js"></script>
+</body>
+</html>

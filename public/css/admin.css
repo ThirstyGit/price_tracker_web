@@ -1,0 +1,107 @@
+/* Fonts from fonts.google.com */
+/* Roboto and Charm */
+@import url('https://fonts.googleapis.com/css2?family=Charm&family=Roboto&display=swap');
+
+/* Reseting basic styling. */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  font-family: 'Charm', cursive;
+  /* If change any size here, also need to fix this on sidebar. */
+  font-size: 20px;
+  box-shadow: 0px 0px 20px -10px black;
+  padding: 1rem 2rem;
+  /* This is so that the box shadow is visible. */
+  position: relative;
+  z-index: 10;
+}
+
+.main-wrapper {
+  display: flex;
+  background-color: rgb(241, 244, 246);
+}
+
+.sidebar {
+  /* 4.875rem is the height of header. Need to change  */
+  min-height: calc(100vh - 4.875rem);
+  background-color: hsl(235, 11%, 20%);
+}
+
+.sidebar-anchor {
+  display: inline-block;
+  text-decoration: none;
+  color: hsl(0, 0%, 90%);
+  padding: 1rem;
+}
+.sidebar-anchor:hover {
+  background-color: hsl(235, 11%, 30%);
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.btn {
+  font-size: 1.3rem;
+  padding: 0.5em;
+  border: 0;
+  outline: 0;
+  background-color: hsl(14.36, 100.00%, 63.14%);
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: hsla(14, 100%, 63%, 0.8);
+}
+
+.btn:active {
+  background-color: hsl(14.36, 100.00%, 63.14%);
+}
+
+.btn-form {
+  width: 100%;
+}
+
+.form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: hsl(14.18,100.00%,78.43%);
+  width: 50vw;
+  max-width: 30rem;
+  padding: 2rem;
+  border-radius: 0.3em;
+  box-shadow: 0px 0px 20px -10px black;
+}
+
+.legend {
+  font-size: 1.5rem;
+}
+
+.form > * {
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  box-sizing: border-box;
+  font-size: 1.3rem;
+  padding: 0.25em 0.5em;
+  width: 100%;
+}
+
+.hr-full-width {
+  width: 100%;
+}
+

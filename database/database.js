@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   website: {
     type: String,
@@ -45,19 +45,25 @@ const productSchema = new mongoose.Schema({
   },
   link: {
     type: String,
-    required: true
+    required: true,
   },
-  price_history: [{
-    // _id: false,
-    price: {
-      type: String,
-      required: true
+  image: {
+    type: String,
+    required: true,
+  },
+  price_history: [
+    {
+      // _id: false,
+      price: {
+        type: String,
+        required: true,
+      },
+      timestamp: {
+        type: Date,
+        default: Date.now,
+      },
     },
-    timestamp: {
-      type: Date,
-      default: Date.now
-    }
-  }]
+  ],
 });
 
 const scrapeSchema = new mongoose.Schema({

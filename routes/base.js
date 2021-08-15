@@ -9,8 +9,5 @@ router.get('/', (req, res) => {
   res.render('homepage');
 });
 
-router.get('/admin', (req, res) => {
-  res.render('admin');
-});
 
 module.exports = router;

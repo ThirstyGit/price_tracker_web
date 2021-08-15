@@ -37,3 +37,53 @@
     width: 40%;
     max-width: 50rem;
 }
+.login-btn{
+    width: 100%;
+    font-size: 1.5rem;
+    background-color: rgb(188, 177, 214);
+    letter-spacing: 1px;
+    border: 2px solid;
+    padding: .5rem;
+}
+.signup-btn{
+    width: 100%;
+    font-size: 1.5rem;
+    background-color: rgb(236, 226, 229);
+    letter-spacing: 1px;
+    border: 2px solid;
+    padding: .5rem;  
+}
+.login-container{
+    justify-content: center;
+    flex-direction: column;
+    text-align: center; 
+    padding-bottom: 7pt;   
+    
+}
+.form-level{
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    width: 100%;
+}
+.input , input-container{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin-bottom: 1.2rem;
+    width: 100%;
+}
+input{
+    -webkit-writing-mode: horizontal-tb !important;
+    text-align: start;
+    appearance: auto;
+
+}
+input[type ="name" i]{
+    padding: 1px 2px;
+}
+input[type="email" i] {
+    padding: 1px 2px;
+}
+input[type="password" i] {
+    -webkit-text-security: disc !important;
+    padding: 2px 2px;
+}

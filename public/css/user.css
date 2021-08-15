@@ -4,18 +4,17 @@
     font-family: sans-serif;
  }
 body{
-    background-color: beige;
+    background-color:whitesmoke;
 }
 .nav-container{
     position: sticky;
     top:0px;
-    /*text-align: center;*/
 }
 .nav{
     background-color:teal;
     justify-content: space-between;
     padding: 1em 1em;
-    /*text-align: center;*/
+
 }
 .header-content{
    text-align: right;
@@ -26,9 +25,38 @@ body{
     font-size: 24px;
     padding: 1em 1em;
     right: 0px;
-    /*text-align: center;*/
 }
 a:hover{
     color:black;
 
+}
+/*........USER BODY CSS..........*/
+.information-conteiner{
+    display: flex;
+    justify-content: space-between;
+}
+
+.side-bar{
+    text-align: center;
+}
+.side-bar div{
+    border: 1px #ccc solid;
+    padding: 10px;
+    margin: 10px;
+    background-color:#333;
+    flex: 2;
+}
+.about-box{
+    border: 1px #ccc solid;
+    padding: 10px;
+    margin: 10px;
+    flex:4;
+}
+.side-image{
+    text-align: center;
+    padding:0.5em;
+}
+.side-info{
+    color: whitesmoke;
+    text-decoration: none;
 }

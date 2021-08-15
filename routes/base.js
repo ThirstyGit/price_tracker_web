@@ -7,7 +7,13 @@ var router = express.Router();
 });*/
 router.get('/', (req, res) => {
   res.render('homepage');
-});
+})
+router.get('/user', (req, res) => {
+  res.render('user');
+})
+router.get('/userRequest', (req, res) => {
+  res.render('userRequest');
+})
 
 router.get('/admin', (req, res) => {
   res.render('admin');

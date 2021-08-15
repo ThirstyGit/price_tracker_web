@@ -13,6 +13,7 @@ const app = express();
 const baseRouter = require('./routes/base');
 const authRouter = require('./routes/auth');
 const trackingRouter = require('./routes/tracking');
+const adminRouter = require('./routes/admin');
 
 // app configs
 app.use(express.json());
@@ -42,6 +43,7 @@ app.set('view engine', 'ejs');
 app.use('/', baseRouter);
 app.use('/auth', authRouter);
 app.use('/tracking', trackingRouter);
+app.use('/admin', adminRouter);
 
 // redirecting every other requests as error
 app.use((req, res) => {

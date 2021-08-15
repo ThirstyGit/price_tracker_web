@@ -4,29 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log IN</title>
-    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/css/signup.css">
     <!-- <link rel="stylesheet" type="text/css" href="/css/homepagebody.css"> -->
 </head>
 <body>
-
-    <h2>Login page</h2>
+    <h2>SIGN UP page</h2>
     <div class="center">
-        <form id="login" class="loginform"  method="POST"  action="/auth/signup">
-            <legend class="legend">Log In</legend>
+        <form id="signup" class="signupform"  method="post"  action="/auth/login">
+            <legend class="legend">Sign Up</legend>
+            <div class=" input-container massage-container">
+                <level for="name" class="form-level"><b>Name</b></label> 
+                <input class="input" id="name" type="name" placeholder="Name">
+            </div>
             <div class=" input-container massage-container">
                 <level for="email" class="form-level"><b>Email</b></label> 
                 <input class="input" id="email" type="email" placeholder="Email">
             </div>
+            <!-- <div class=" input-container massage-container">
+                <level for="" class="form-level"><b>Email</b></label> 
+                <input class="input" id="email" type="email" placeholder="Email">
+            </div> -->
             <div class="input-container massage-container">
                 <label for="password" class="form-level"><b>Password</b></label>
                 <input class="input" name="password" id="password" type="password" placeholder="Password">
             </div>
             <div>
-                <button class="login-btn" type="submit">Log In</button>
-            </div>
-            <div>
-                <button class="signup-btn" type="submit">Sign Up</button>  
+                <button class="signup-btn" type="submit">Sign Up</button> 
             </div>  
         </form>
     </div>

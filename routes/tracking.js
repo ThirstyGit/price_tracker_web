@@ -35,7 +35,7 @@ router.get('/prod/:id', async (req, res) => {
     console.log(1234);
     const ID = req.params.id;
     const desiredProduct = await Products.find({_id: ID});
-    console.log(desiredProduct[0]);
+    // console.log(desiredProduct[0]);
     const prices = desiredProduct[0].price_history.map(({price}) => parseFloat(price.replace(/[^\d.-]/g, '')));
     const times = desiredProduct[0].price_history.map(({timestamp}) => new Date(`${timestamp}`).toLocaleTimeString()); // Bloody hell timestamp!!
     console.log(prices, times);

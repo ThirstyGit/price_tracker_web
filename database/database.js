@@ -60,5 +60,23 @@ const productSchema = new mongoose.Schema({
   }]
 });
 
+const scrapeSchema = new mongoose.Schema({
+  url: {
+    type: String,
+    required: true
+  },
+  params: {
+    name: {
+      type: String,
+      required: true
+    },
+    price: {
+      type: String,
+      required: true
+    }
+  }
+});
+
 module.exports.User = mongoose.model("user", userSchema);
 module.exports.Products = mongoose.model("product", productSchema);
+module.exports.Scrape = mongoose.model("scrape", scrapeSchema);

@@ -25,7 +25,14 @@ async function scrap(url, params, cb) {
   // Extracting the image urls.
   $(params.image).each((index, data) => {
     if (productData[index]) {
-      productData[index]["image"] = $(data).text().replace(/\s\s+/g, "");
+      productData[index]["image"] = $(data).attr("src");
+    }
+  });
+
+  // If there is only one image that is used for every product.
+  productData.forEach((product) => {
+    if(!product.image) {
+      product['image'] = productData[0].image;
     }
   });
 
@@ -37,7 +44,6 @@ async function scrap(url, params, cb) {
 
   if (productData.length) {
     productData.forEach(async (data) => {
-      console.log(data);
       const currProduct = await Products.find({ name: data.name });
       const alreadyThere = currProduct.length !== 0;
 

@@ -1,81 +1,92 @@
-
- .legend{
-    font-family: sans-serif;
-    font-size: 1.5rem;
-    color:rgb(0, 22, 150);
-    text-align: center;
-    display: block;
-    padding-inline-start: 2px;
-    padding-inline-end: 2px;
-    margin-bottom: 1.2rem;
-   
-
-}
 * {
     margin: 0px;
     padding: 0px;
     font-family: sans-serif;
     text-align: center;
  }
- body{
-    background-color: rgb(199, 218, 209);
+
+.legend{
+    font-family: sans-serif;
+    font-size: 2rem;
+    color: whitesmoke;
+    text-align: center;
+    display: block;
+    padding-bottom: 20px;
+    /* padding-inline-end: 2px; */
+    margin-bottom: 1.2rem;
 }
+.header{
+    padding: 1em 1em;
+}
+
+ body{
+    background-color: whitesmoke;
+}
+
 .center{
-    min-height: 50vh;
+    min-height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 .loginform{
+    display: flex;
     flex-direction: column;
-    padding: 5rem;
+    padding: 2.5rem 5rem;
     border-radius: .4rem;
     box-shadow: 0 0 20px -5px;
-    background-color: rgb(241, 229, 241);
-    /* background-color: ; */
-    width: 40%;
-    
-    max-width: 50rem;
+    background-color: teal;
+    width: 60vw;
+    max-width: 35rem;
 }
-.login-btn{
-    width: 100%;
-    font-size: 1.5rem;
-    background-color: rgb(199, 235, 236);
-    letter-spacing: 1px;
-    border: 2px solid;
-    padding: .5rem;
+.loginform > * {
+  margin-bottom: 2rem;
 }
+
 .signup-btn{
     width: 100%;
     font-size: 1.5rem;
     background-color: rgb(236, 226, 229);
     letter-spacing: 1px;
-    border: 2px solid;
     padding: .5rem;
-
+    border-radius: 0.3em;
 }
-.form-level{
+.form-level {
     font-size: 1.2rem;
     font-family: sans-serif;
     width: 100%;
+    color: whitesmoke;
+    text-align: start;
 }
-.input , input-container{
+.input-container{
     box-sizing: border-box;
     font-family: sans-serif;
     margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
-input{
-    -webkit-writing-mode: horizontal-tb !important;
+.input{
     text-align: start;
-    appearance: auto;
+    padding: 0.25em 0.5em;
+    width: 100%;
+    font-size: 1.3rem;
+    box-sizing: border-box;
+}
 
+.form-btn {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: black;
+    padding: 0.5em;
+    background-color: rgb(199, 235, 236);
+    border-radius: 0.3em;
+    cursor: pointer;
+    border: 0;
+    outline: none;
 }
-input[type="email" i] {
-    padding: 1px 2px;
+.form-btn:hover,
+.form-btn:focus {
+  background-color: rgba(199, 235, 236, 0.8);
 }
-input[type="password" i] {
-    -webkit-text-security: disc !important;
-    padding: 2px 2px;
-}
+

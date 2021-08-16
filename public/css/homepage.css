@@ -6,12 +6,14 @@
 body{
     background-color: beige;
 }
-a{
+.nav a{
     text-decoration: none;
-    color: black;
+    color:whitesmoke;
 }
-a:hover{
-    color:blue;
+
+.nav2 a{
+    text-decoration: none;
+    color:black;
 
 }
 .nav-container{
@@ -19,7 +21,7 @@ a:hover{
     top:0px;
 }
 .nav{
-    background-color:khaki;
+    background-color:teal;
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
@@ -29,7 +31,7 @@ a:hover{
 
 
 .search-bar-conteiner{
-    width: 60%;
+    width: 50%;
     height: 3em;
    
 }
@@ -46,8 +48,47 @@ a:hover{
 .nav2{
     display: flex;
     background-color:white;
-    padding: 0.5em 0.5em;
+    padding: 1em 1em;
     justify-content: space-around;
+}
+.nav2 a:hover{
+    color:blue;
+
 }
 
 
+/*.........NEW CODE CSS..............*/
+.conteiner{
+     display: flex;
+    justify-content: space-between;
+}
+.header{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30Px;
+    color: #333;
+    padding-bottom: 1em;
+}
+.side-image{
+    background-color: rgb(3, 190, 190);
+    padding: 1em 1em 1em 1em;
+    flex: 3;
+    text-align: center;
+}
+.image{
+    width: 50%;
+}
+.box2{
+    flex: 2;
+    text-align: center;
+}
+.box2 div{
+    border: 1px #ccc solid;
+    padding: 10px;
+    margin: 10px;
+    background-color:#333;
+    flex: 2;
+}
+.side-info{
+    color: whitesmoke;
+    text-decoration: none;
+}

@@ -5,6 +5,7 @@ const scrapBtn = document.querySelector("#scrap-btn");
 const deleteProductForm = document.querySelector("#delete-product-form");
 const deleteProductInput = document.querySelector("#delete-product-input");
 const formOutputContainer = document.querySelector("#form-output-container");
+const stopBtn = document.querySelector("#stop-scrap-btn");
 
 // Change admin page view with sidebar.
 sideAnchor.forEach((anchor, index) => {
@@ -29,6 +30,7 @@ scrapBtn.addEventListener("click", (e) => {
     console.error(err);
   })
 });
+
 
 function removeElements(element) {
   while(element.firstChild) {
@@ -92,4 +94,13 @@ deleteProductForm.addEventListener('submit', (e) => {
 });
 
 // Delete a product.
+
+stopBtn.addEventListener("click", (e) => {
+  fetch("/api/stopscraping", {
+    method: 'POST'
+  })
+  .catch(err => {
+    console.error(err);
+  })
+});
 

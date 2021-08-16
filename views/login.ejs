@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log IN</title>
+    <title>Log In</title>
     <link rel="stylesheet" type="text/css" href="/css/login.css">
-    <!-- <link rel="stylesheet" type="text/css" href="/css/homepagebody.css"> -->
 </head>
 <body>
-
-    <h2>Login page</h2>
+    <h1 class="header">LogIn page</h1>
     <div class="center">
         <form id="login" class="loginform"  method="POST"  action="/auth/login">
             <legend class="legend">Log In</legend>
@@ -22,15 +20,11 @@
                 <label for="password" class="form-level"><b>Password</b></label>
                 <input class="input" name="password" id="password" type="password" placeholder="Password">
             </div>
-            <div>
-                <button class="login-btn" type="submit">Log In</button>
-            </div>
-        </form>
-        <div class="signup-container">
-            <a href="/auth/register">
-                <button class="signup-btn" type="submit">Sign Up</button>  
+            <button class="form-btn" type="submit">Log In</button>
+            <a href="/auth/register" class="form-btn">
+              Sign Up
             </a>
-        </div>  
+        </form>
     </div>
 </body>
 </html>

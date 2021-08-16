@@ -12,6 +12,7 @@ router.post('/newproduct', (req, res) => {
     res.redirect('/admin');
 });
 
+
 router.delete("/deleteproduct", (req, res) => {
   Scrape.deleteOne({_id: req.body.id})
   .then(() => {
@@ -22,5 +23,6 @@ router.delete("/deleteproduct", (req, res) => {
   })
   
 });
+
 
 module.exports = router;

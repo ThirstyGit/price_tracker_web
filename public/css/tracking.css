@@ -1,0 +1,30 @@
+ul {
+    display: flex;
+    flex: 0 0 20%;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.title {
+    transition: .3s;
+}
+
+.prod_single_container {
+    display: block;
+    width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid grey;
+    border-radius: 7px;
+    margin: 15px;
+    padding: 15px;
+}
+.prod_single_container:hover h2[class="title"] {
+    color: hotpink;
+}
+
+.heading {
+    background-color: khaki;
+    color: mediumblue;
+}

@@ -49,7 +49,7 @@ app.use('/api', apiRouter);
 
 // redirecting every other requests as error
 app.use((req, res) => {
-    res.status(404).send('lost in the jungle of binary bits? 404_ERROR_NOT_FOUND')
+    res.status(404).render('404')
 });
 
 

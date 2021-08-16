@@ -14,7 +14,12 @@
     ul {
         display: flex;
         flex: 0 0 20%;
+        flex-wrap: wrap;
         list-style-type: none;
+    }
+
+    .title {
+        transition: .3s;
     }
 
     .prod_single_container {
@@ -24,19 +29,22 @@
         overflow: hidden;
         text-overflow: ellipsis;
         border: 1px solid grey;
-        border-radius: 12px;
+        border-radius: 7px;
         margin: 15px;
         padding: 15px;
+    }
+    .prod_single_container:hover h2[class="title"] {
+        color: hotpink;
     }
 </style>
 
 <body>
-    <h3>Price History</h3>
+    <h2 class="text-center">Price History</h2>
     <ul>
     <% products.forEach((single) => {
         %> <li> <div class="prod_single_container">
-            <h2 class="title"><%= single.el.name %></h2>
-            <p title="<%= single.label[1] %>"> <%= single.el.price_history[0].price %> <%= single.label[0] %>  </p>
+            <h2 class="title"><%= single.el.name.length < 25 ? single.el.name : `${single.el.name.substring(0, 25)} ...` %></h2>
+            <p title="<%= single.label[1] %>"> <%= single.el.price_history[0].price.substring(1) %> <%= single.label[0] %>  </p>
             <a class="btn btn-primary" href='<%= single.el.link %>' role="button">Link</a>
             <a class="btn btn-success" href='/tracking/prod/<%= single.el.id %>' role="button">Show Price Graph</a>
         </div> </li>

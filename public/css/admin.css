@@ -136,6 +136,19 @@
   width: 100%;
 }
 
+.delete-form {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.delete-form > input {
+  width: 75%;
+}
+
+.delete-form > * {
+  margin-bottom: 0;
+}
+
 .hidden {
   display: none;
 }

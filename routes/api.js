@@ -13,4 +13,15 @@ router.post('/scrap', async (req, res) => {
   res.json({ message: 'Success' });
 });
 
+router.get('/scrap', async (req, res) => {
+  if(req.query.name) {
+    const searchValue = req.query.name.replace(" ", "|");
+    const data = await Scrape.find({ url: new RegExp(searchValue, "i") });
+    res.json(data);
+  }
+  else {
+    res.json({ error: 'Please give the name of the product.' })
+  }
+});
+
 module.exports = router;

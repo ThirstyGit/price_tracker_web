@@ -7,6 +7,9 @@
   --main-clr2: hsla(175, 41%, 79%, 0.7);
   --blk-primary: hsl(235, 11%, 20%);
   --blk-secondary: hsl(235, 11%, 30%);
+  --gray-primary: rgb(211, 211, 211);
+  --orange-primary: hsl(0, 100%, 63%);
+  --orange-secondary: hsl(0, 100%, 67%);
 }
 
 /* Reseting basic styling. */
@@ -79,6 +82,10 @@
   margin: 0 auto;
 }
 
+.main-element {
+  margin: 10vw 0;
+}
+
 .btn {
   font-size: 1.2rem;
   padding: 0.5em;
@@ -108,11 +115,11 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  width: 50vw;
+  width: 80vw;
   max-width: 30rem;
   padding: 2rem;
   border-radius: 0.3em;
-  border: 1px solid rgb(211, 211, 211);
+  border: 1px solid var(--gray-primary);
 }
 
 .legend {
@@ -139,6 +146,7 @@
 .delete-form {
   flex-direction: row;
   justify-content: space-between;
+  max-width: 50rem;
 }
 
 .delete-form > input {
@@ -153,3 +161,49 @@
   display: none;
 }
 
+.form-output-container {
+  box-sizing: border-box;
+  background-color: white;
+  width: 80vw;
+  max-width: 50rem;
+  padding: 2rem;
+  border-radius: 0.3em;
+  border: 1px solid var(--gray-primary);
+}
+
+.form-output {
+  padding: 1em 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-output-value {
+  word-break: break-all;
+  max-width: 70%;
+  font-size: 1.3rem;
+}
+
+.form-output:not(:last-child) {
+  border-bottom: 1px solid var(--gray-primary);
+}
+
+.btn-danger {
+  font-size: 1.2rem;
+  margin: auto 0;
+  padding: 0.5em;
+  border: 0;
+  outline: 0;
+  background-color: var(--orange-primary);
+  border-radius: 0.3em;
+  cursor: pointer;
+  height: 100%;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: var(--orange-secondary);
+}
+
+.btn-danger:active {
+  background-color: var(--orange-primary);
+}

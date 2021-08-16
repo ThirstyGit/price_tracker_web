@@ -3,6 +3,8 @@ const sideAnchor = document.querySelectorAll(".sidebar-anchor");
 const mainElement = document.querySelectorAll(".main-element");
 const scrapBtn = document.querySelector("#scrap-btn");
 const deleteProductForm = document.querySelector("#delete-product-form");
+const deleteProductInput = document.querySelector("#delete-product-input");
+const formOutputContainer = document.querySelector("#form-output-container");
 
 // Change admin page view with sidebar.
 sideAnchor.forEach((anchor, index) => {
@@ -29,7 +31,32 @@ scrapBtn.addEventListener("click", (e) => {
 });
 
 // Search for deleting a product.
+deleteProductForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  fetch(`/api/scrap?name=${deleteProductInput.value}`)
+  .then(res => res.json())
+  .then(datas => {
+    datas.forEach(data => {
+      // Creating Elements.
+      const formOutput = document.createElement("div");
+      const formOutputValue = document.createElement("p");
+      const deleteButton = document.createElement("button");
+      // Inserting necessary data.
+      formOutputValue.innerText = data.url;
+      deleteButton.innerText = 'Delete';
+      // Adding necessary classes.
+      formOutput.classList.add('form-output');
+      formOutputValue.classList.add("form-output-value");
+      deleteButton.classList.add("btn-danger");
 
+      // Appending them to the form.
+      formOutput.appendChild(formOutputValue);
+      formOutput.appendChild(deleteButton);
+      formOutputContainer.appendChild(formOutput);
+    });
+    formOutputContainer.classList.remove('hidden');
+  });
+});
 
 // Delete a product.
 

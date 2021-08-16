@@ -15,10 +15,13 @@
 
 
 <body>
+    <ul class="nav">
+        <li class="nav-li"><a type="button" role="button" href="/">Home</a></li>
+    </ul>
     <h2 class="heading text-center">Price History</h2>
-    <a class="btn btn-warning" href='/' role="button">Home</a>
+    <!-- <a class="btn btn-warning" href='/' role="button">Home</a> -->
 
-    <ul>
+    <ul class="list-prods">
     <% products.forEach((single) => {
         %> <li> <div class="prod_single_container">
             <h2 class="title"><%= single.el.name.length < 25 ? single.el.name : `${single.el.name.substring(0, 25)} ...` %></h2>

@@ -10,10 +10,14 @@
 <body class="body">
   <header class="header">
     <h2 class="main-title">Admin Panel</h2>
+    <nav>
+      <a href="/" class="header-anchor">Home</a>
+    </nav>
   </header>
   <main class="main-wrapper">
     <nav class="sidebar">
       <a class="sidebar-anchor">Add New Product</a>
+      <a class="sidebar-anchor">Delete Product</a>
       <a class="sidebar-anchor">Scrap</a>
     </nav>
     <div class="main">
@@ -27,6 +31,15 @@
           <input class="input" type="text" name="image" placeholder="Image Selector">
           <button class="btn btn-form">SUBMIT</button>
         </form>
+      </div>
+      <div class="main-element hidden">
+        <form class="form delete-form" id="delete-product-form">
+          <input class="input" id="delete-product-input" type="text" name="name" placeholder="Name">
+          <button class="btn">Search</button>
+        </form>
+        <div class="form-output-container hidden" id="form-output-container">
+
+        </div>
       </div>
       <div class="main-element hidden" id="scrap">
         <button class="btn" id="scrap-btn">Start Scrap</button>

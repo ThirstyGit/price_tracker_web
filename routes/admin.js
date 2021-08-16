@@ -13,4 +13,16 @@ router.post('/newproduct', (req, res) => {
 });
 
 
+router.delete("/deleteproduct", (req, res) => {
+  Scrape.deleteOne({_id: req.body.id})
+  .then(() => {
+    res.json({message: "Deleted"});
+  })
+  .catch(err => {
+    res.json(err);
+  })
+  
+});
+
+
 module.exports = router;

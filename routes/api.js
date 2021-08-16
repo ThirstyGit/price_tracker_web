@@ -19,6 +19,17 @@ router.post('/scrap', async (req, res) => {
   res.json({ message: 'Success' });
 });
 
+router.get('/scrap', async (req, res) => {
+  if(req.query.name) {
+    const searchValue = req.query.name.replace(" ", "|");
+    const data = await Scrape.find({ url: new RegExp(searchValue, "i") });
+    res.json(data);
+  }
+  else {
+    res.json({ error: 'Please give the name of the product.' })
+  }
+});
+
 router.post('/stopscraping', async (req, res) => {
   // console.log(cron.getTasks())
   console.log(`This schedule is running for ${(Date.now() - startTime)/1000/60} minutes`);

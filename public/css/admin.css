@@ -2,6 +2,16 @@
 /* Roboto and Charm */
 @import url('https://fonts.googleapis.com/css2?family=Charm&family=Roboto&display=swap');
 
+:root {
+  --main-clr: hsl(175, 41%, 79%);
+  --main-clr2: hsla(175, 41%, 79%, 0.7);
+  --blk-primary: hsl(235, 11%, 20%);
+  --blk-secondary: hsl(235, 11%, 30%);
+  --gray-primary: rgb(211, 211, 211);
+  --orange-primary: hsl(0, 100%, 63%);
+  --orange-secondary: hsl(0, 100%, 67%);
+}
+
 /* Reseting basic styling. */
 * {
   margin: 0;
@@ -13,14 +23,30 @@
 }
 
 .header {
-  font-family: 'Charm', cursive;
   /* If change any size here, also need to fix this on sidebar. */
   font-size: 20px;
   box-shadow: 0px 0px 20px -10px black;
   padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
   /* This is so that the box shadow is visible. */
   position: relative;
   z-index: 10;
+}
+
+.main-title {
+  font-family: 'Charm', cursive;
+}
+
+.header-anchor {
+  text-decoration: none;
+  color: var(--blk-primary);
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-left: 2px solid var(--blk-primary);
+}
+.header-anchor:hover {
+  color: var(--blk-secondary);
 }
 
 .main-wrapper {
@@ -31,7 +57,7 @@
 .sidebar {
   /* 4.875rem is the height of header. Need to change  */
   min-height: calc(100vh - 4.875rem);
-  background-color: hsl(235, 11%, 20%);
+  background-color: var(--blk-primary);
   display: flex;
   flex-direction: column;
 }
@@ -46,7 +72,7 @@
 }
 
 .sidebar-anchor:hover {
-  background-color: hsl(235, 11%, 30%);
+  background-color: var(--blk-secondary);
 }
 
 .main {
@@ -56,23 +82,27 @@
   margin: 0 auto;
 }
 
+.main-element {
+  margin: 10vw 0;
+}
+
 .btn {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   padding: 0.5em;
   border: 0;
   outline: 0;
-  background-color: hsl(14.36, 100.00%, 63.14%);
+  background-color: var(--main-clr);
   border-radius: 0.3em;
   cursor: pointer;
 }
 
 .btn:hover,
 .btn:focus {
-  background-color: hsla(14, 100%, 63%, 0.8);
+  background-color: var(--main-clr2);
 }
 
 .btn:active {
-  background-color: hsl(14.36, 100.00%, 63.14%);
+  background-color: var(--main-clr);
 }
 
 .btn-form {
@@ -84,16 +114,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: hsl(14.18,100.00%,78.43%);
-  width: 50vw;
+  background-color: white;
+  width: 80vw;
   max-width: 30rem;
   padding: 2rem;
   border-radius: 0.3em;
-  box-shadow: 0px 0px 20px -10px black;
+  border: 1px solid var(--gray-primary);
 }
 
 .legend {
   font-size: 1.5rem;
+  color: var(--blk-primary)
 }
 
 .form > * {
@@ -105,13 +136,75 @@
   font-size: 1.3rem;
   padding: 0.25em 0.5em;
   width: 100%;
+  color: var(--blk-secondary);
 }
 
 .hr-full-width {
   width: 100%;
 }
 
+.delete-form {
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 50rem;
+}
+
+.delete-form > input {
+  width: 75%;
+}
+
+.delete-form > * {
+  margin-bottom: 0;
+}
+
 .hidden {
   display: none;
 }
 
+.form-output-container {
+  box-sizing: border-box;
+  background-color: white;
+  width: 80vw;
+  max-width: 50rem;
+  padding: 2rem;
+  border-radius: 0.3em;
+  border: 1px solid var(--gray-primary);
+}
+
+.form-output {
+  padding: 1em 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-output-value {
+  word-break: break-all;
+  max-width: 70%;
+  font-size: 1.3rem;
+}
+
+.form-output:not(:last-child) {
+  border-bottom: 1px solid var(--gray-primary);
+}
+
+.btn-danger {
+  color: rgb(247, 247, 247);
+  font-size: 1.2rem;
+  margin: auto 0;
+  padding: 0.5em;
+  border: 0;
+  outline: 0;
+  background-color: var(--orange-primary);
+  border-radius: 0.3em;
+  cursor: pointer;
+  height: 100%;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: var(--orange-secondary);
+}
+
+.btn-danger:active {
+  background-color: var(--orange-primary);
+}

@@ -1,4 +1,10 @@
-ul {
+@import url('https://fonts.googleapis.com/css2?family=Charm&family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.list-prods {
     display: flex;
     flex: 0 0 20%;
     flex-wrap: wrap;
@@ -20,11 +26,40 @@ ul {
     margin: 15px;
     padding: 15px;
 }
+.prod_single_container h2[class="title"] {
+    color: black;
+    font-weight: bold;
+}
 .prod_single_container:hover h2[class="title"] {
-    color: hotpink;
+    color: grey;
+    font-weight: bolder;
 }
 
-.heading {
-    background-color: khaki;
-    color: mediumblue;
+.price {
+    font-size: 24px;
+    font-weight: bold;
 }
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .nav-li {
+    float: left;
+  }
+  
+  .nav-li a {
+    display: block;
+    color: 04AA6D;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .nav-li a:hover {
+    color: #04AA6D;
+  }

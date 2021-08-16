@@ -6,7 +6,7 @@ var router = express.Router();
   res.status(200).send("Came from the wild...");
 });*/
 router.get('/', (req, res) => {
-  res.render('homepage');
+  res.render("homepage", { user: req.user });
 })
 router.get('/user', (req, res) => {
   res.render('user');

@@ -4,7 +4,7 @@
     font-family: sans-serif;
  }
 body{
-    background-color: beige;
+    background-color: rgb(241, 244, 246);
 }
 .nav a{
     text-decoration: none;
@@ -24,11 +24,12 @@ body{
     background-color:teal;
     display: flex;
     justify-content: space-between;
-    flex-wrap: nowrap;
     padding: 1em 1em;
-    align-items: flex-end;
+    align-items: center;
 }
-
+.nav-anchor {
+    font-size: 1.3rem;
+}
 
 .search-bar-conteiner{
     width: 50%;

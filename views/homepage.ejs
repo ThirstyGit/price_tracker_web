@@ -11,18 +11,16 @@
 <body>
     <nav class="nav-container">
      <nav class="nav">
-        <div class="headerlogo">
-            <a><a href="/"><img src="/images/logo1.png" alt="Price_Tracker"></a></a>
-        </div>
+        <a class="nav-anchor" href="/"><img src="/images/logo1.png" alt="Price_Tracker"></a>
         <div class="search-bar-conteiner">
             <input class="search-bar" id="search-bar" type="text" placeholder="Search...">
         </div>
-        <div>
-            <a  href="/auth/login"><b>Login & Singup</b></a>
-        </div>
-
+        <% if(!user) { %>
+            <a class="nav-anchor" href="/auth/login"><b>Login</b></a>
+        <% } else { %>
+            <a class="nav-anchor" href="/auth/logout">Logout</a>
+        <% } %>
      </nav>
-
      <nav class="nav2">
         <div>
             <a href="">alibaba.com</a>
@@ -55,21 +53,17 @@
             <diV>
                 <a class="side-info" href="">Product</a>
             </diV>
-            <diV>
-                <a class="side-info"  href="/admin">Admin</a>
-            </diV>
-            <diV>
-                <a class="side-info"  href="/user">Profile</a>
-            </diV>
-            <diV>
-                <a class="side-info"  href="/tracking">Price Tracking</a>
-            </diV>
-            <diV>
-                <a class="side-info" href="/auth/login">Login</a>
-            </diV>
-            <diV>
-                <a class="side-info" href="">Logout</a>
-            </diV>
+            <% if(user) { %>
+                <diV>
+                    <a class="side-info"  href="/admin">Admin</a>
+                </diV>
+                <diV>
+                    <a class="side-info"  href="/user">Profile</a>
+                </diV>
+                <diV>
+                    <a class="side-info"  href="/tracking">Price Tracking</a>
+                </diV>
+            <% } %>
         </div>
 
         </div>

@@ -44,6 +44,29 @@
       <div class="main-element hidden" id="scrap">
         <button class="btn" id="scrap-btn">Start Scrap</button>
         <button class="btn" id="stop-scrap-btn">Stop Scrap</button>
+        <p id="status"></p>
+        <div class="settings-panel">
+          <p>run scheduling for every   </p>
+          
+
+          <select onchange="createCronExpr()" name="" id="quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <select onchange="createCronExpr()" name="" id="hour-or-minute">
+            <option value="minutes">minutes</option>
+            <option value="hourse">hours</option>
+          </select> <br>
+          
+        </div>
       </div>
     </div>
   </main>

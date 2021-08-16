@@ -208,3 +208,14 @@
 .btn-danger:active {
   background-color: var(--orange-primary);
 }
+
+.settings-panel {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin: 5px;
+}
+
+.settings-panel select {
+  margin-left: 10px;
+}

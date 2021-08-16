@@ -6,6 +6,9 @@ const deleteProductForm = document.querySelector("#delete-product-form");
 const deleteProductInput = document.querySelector("#delete-product-input");
 const formOutputContainer = document.querySelector("#form-output-container");
 const stopBtn = document.querySelector("#stop-scrap-btn");
+const hourOrMin = document.querySelector("#hour-or-minute");
+const quantity = document.querySelector("#quantity");
+const status = document.querySelector("#status");
 
 // Change admin page view with sidebar.
 sideAnchor.forEach((anchor, index) => {
@@ -23,8 +26,15 @@ sideAnchor.forEach((anchor, index) => {
 
 // Start a single scrap.
 scrapBtn.addEventListener("click", (e) => {
+
+  const cronExpr = createCronExpr();
+  console.log(cronExpr);
   fetch("/api/scrap", {
-    method: 'POST'
+    method: 'POST',
+    body: JSON.stringify({cronExpr}),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
   })
   .catch(err => {
     console.error(err);
@@ -104,3 +114,25 @@ stopBtn.addEventListener("click", (e) => {
   })
 });
 
+
+// custome time scheduling
+const createCronExpr = () => {
+  const q = quantity.value;
+  return hourOrMin.selectedIndex == 0 ? `*/${q} * * * *` : `0 */${q} * * *`;
+}
+
+
+setInterval(() => {
+  fetch('/api/log', {
+    method: 'POST'
+  }).then(response => response.json())
+  .then(data => {
+    if(data.running) {
+      status.innerHTML = "Scheduling running ✔️";
+      status.style.color = "#065c1d";
+    } else {
+      status.innerHTML = "Scheduling not running ❌"
+      status.style.color = "#FF2009";
+    }
+  });
+}, 2000);

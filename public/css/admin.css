@@ -2,6 +2,13 @@
 /* Roboto and Charm */
 @import url('https://fonts.googleapis.com/css2?family=Charm&family=Roboto&display=swap');
 
+:root {
+  --main-clr: hsl(175, 41%, 79%);
+  --main-clr2: hsla(175, 41%, 79%, 0.7);
+  --blk-primary: hsl(235, 11%, 20%);
+  --blk-secondary: hsl(235, 11%, 30%);
+}
+
 /* Reseting basic styling. */
 * {
   margin: 0;
@@ -13,14 +20,30 @@
 }
 
 .header {
-  font-family: 'Charm', cursive;
   /* If change any size here, also need to fix this on sidebar. */
   font-size: 20px;
   box-shadow: 0px 0px 20px -10px black;
   padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
   /* This is so that the box shadow is visible. */
   position: relative;
   z-index: 10;
+}
+
+.main-title {
+  font-family: 'Charm', cursive;
+}
+
+.header-anchor {
+  text-decoration: none;
+  color: var(--blk-primary);
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-left: 2px solid var(--blk-primary);
+}
+.header-anchor:hover {
+  color: var(--blk-secondary);
 }
 
 .main-wrapper {
@@ -31,7 +54,7 @@
 .sidebar {
   /* 4.875rem is the height of header. Need to change  */
   min-height: calc(100vh - 4.875rem);
-  background-color: hsl(235, 11%, 20%);
+  background-color: var(--blk-primary);
   display: flex;
   flex-direction: column;
 }
@@ -46,7 +69,7 @@
 }
 
 .sidebar-anchor:hover {
-  background-color: hsl(235, 11%, 30%);
+  background-color: var(--blk-secondary);
 }
 
 .main {
@@ -57,22 +80,22 @@
 }
 
 .btn {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   padding: 0.5em;
   border: 0;
   outline: 0;
-  background-color: hsl(14.36, 100.00%, 63.14%);
+  background-color: var(--main-clr);
   border-radius: 0.3em;
   cursor: pointer;
 }
 
 .btn:hover,
 .btn:focus {
-  background-color: hsla(14, 100%, 63%, 0.8);
+  background-color: var(--main-clr2);
 }
 
 .btn:active {
-  background-color: hsl(14.36, 100.00%, 63.14%);
+  background-color: var(--main-clr);
 }
 
 .btn-form {
@@ -84,16 +107,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: hsl(14.18,100.00%,78.43%);
+  background-color: white;
   width: 50vw;
   max-width: 30rem;
   padding: 2rem;
   border-radius: 0.3em;
-  box-shadow: 0px 0px 20px -10px black;
+  border: 1px solid rgb(211, 211, 211);
 }
 
 .legend {
   font-size: 1.5rem;
+  color: var(--blk-primary)
 }
 
 .form > * {
@@ -105,6 +129,7 @@
   font-size: 1.3rem;
   padding: 0.25em 0.5em;
   width: 100%;
+  color: var(--blk-secondary);
 }
 
 .hr-full-width {

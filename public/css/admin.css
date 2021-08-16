@@ -188,6 +188,7 @@
 }
 
 .btn-danger {
+  color: rgb(247, 247, 247);
   font-size: 1.2rem;
   margin: auto 0;
   padding: 0.5em;

@@ -12,4 +12,5 @@ router.post('/newproduct', (req, res) => {
     res.redirect('/admin');
 });
 
+
 module.exports = router;

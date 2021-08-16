@@ -40,7 +40,7 @@ async function scrap(url, params, cb) {
   // insert them to the database.
   const website = url.split("https://")[1].split("/")[0];
 
-  let currProducts = await Products.find();
+  // let currProducts = await Products.find();
 
   if (productData.length) {
     productData.forEach(async (data) => {

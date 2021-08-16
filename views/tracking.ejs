@@ -23,11 +23,12 @@
 
     <ul class="list-prods">
     <% products.forEach((single) => {
-        %> <li> <div class="prod_single_container">
+        %> <li> <div style="background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 174, 174, 0.45)), url(<%= single.el.image %>)" class="prod_single_container">
             <h2 class="title"><%= single.el.name.length < 25 ? single.el.name : `${single.el.name.substring(0, 25)} ...` %></h2>
-            <p title="<%= single.label[1] %>"> <%= single.el.price_history[0].price.substring(1) %> <%= single.label[0] %>  </p>
+            <p title="<%= single.label[1] %>" class="price"> <%= single.el.price_history[0].price.substring(1) %> <%= single.label[0] %>  </p>
             <a class="btn btn-primary" href='<%= single.el.link %>' role="button">Link</a>
             <a class="btn btn-success" href='/tracking/prod/<%= single.el.id %>' role="button">Show Price Graph</a>
+            <!-- <img src="<%= single.el.image %>" alt="" srcset=""> -->
         </div> </li>
         <%
     }); %>

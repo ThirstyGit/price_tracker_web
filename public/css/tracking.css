@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Charm&family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 .list-prods {
     display: flex;
     flex: 0 0 20%;
@@ -20,13 +26,18 @@
     margin: 15px;
     padding: 15px;
 }
+.prod_single_container h2[class="title"] {
+    color: black;
+    font-weight: bold;
+}
 .prod_single_container:hover h2[class="title"] {
-    color: hotpink;
+    color: grey;
+    font-weight: bolder;
 }
 
-.heading {
-    background-color: beige;
-    color: mediumblue;
+.price {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .nav {

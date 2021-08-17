@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
       type
     });
     user.save();
-    res.json({ message: "success" });
+    res.redirect('/auth/login');
   }
 });
 

@@ -22,4 +22,3 @@ passowrd.addEventListener("click", (e) => {
 confirmPassword.addEventListener("click", (e) => {
     passwordMismatchMessage.classList.remove("enabled");
 });
-

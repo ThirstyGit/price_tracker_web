@@ -21,7 +21,7 @@ body{
     top:0px;
 }
 .nav{
-    background-color:teal;
+    background-color:#333;
     display: flex;
     justify-content: space-between;
     padding: 1em 1em;
@@ -29,6 +29,7 @@ body{
 }
 .nav-anchor {
     font-size: 1.3rem;
+    font-family: 'Charm', cursive;
 }
 
 .search-bar-conteiner{
@@ -66,17 +67,18 @@ body{
 .header{
     font-family: 'Courier New', Courier, monospace;
     font-size: 30Px;
-    color: #333;
+    color:#333;
     padding-bottom: 1em;
 }
 .side-image{
-    background-color: rgb(3, 190, 190);
+    background-color: rgb(241, 244, 246);
     padding: 1em 1em 1em 1em;
     flex: 3;
     text-align: center;
 }
 .image{
-    width: 50%;
+    width: 60%;
+    height: 150%;
 }
 .box2{
     flex: 2;

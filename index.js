@@ -40,7 +40,6 @@ app.use('/images', express.static(__dirname + '/public/images'));
 app.use('/favicon.ico', express.static(__dirname + '/favicon.ico'));
 app.set('view engine', 'ejs');
 
-
 // All routes for our website.
 app.use('/', baseRouter);
 app.use('/auth', authRouter);
@@ -53,7 +52,6 @@ app.use('/monitor', monitorRouter);
 app.use((req, res) => {
     res.status(404).render('404')
 });
-
 
 // Listen @ designated port
 const PORT = process.env.NODE_PORT || 3333;

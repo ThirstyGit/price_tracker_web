@@ -1,12 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const { Monitor } = require('../database/database');
-const {CalculateNextTime} = require('../functions/misc');
+const {CalculateNextTime, getNextTimeInterval} = require('../functions/misc');
+let running = false;
 
-
-// router.get('/', (req, res) => res.send({test: 12}));
-
-router.post("/createSchedule", (req, res) => {
+router.post("/createSchedule", async (req, res) => {
     const {productID, interval, hourOrMinute, emailOfRequester, minimumDesiredPriceOfRequester} = req.body;
 
     const increaseNext = `${interval}:${hourOrMinute == "0" ? "M" : "H"}`;
@@ -19,9 +17,27 @@ router.post("/createSchedule", (req, res) => {
         emailTo: emailOfRequester,
         increaseNext
     }
+    // console.log(await Monitor.find());
+    const currState = await Monitor.find({productID, emailTo: emailOfRequester});
+    if (currState.length !== 0) {
+        res.send({msg: "You have already set this product."});
+    } else {
+        Monitor(DBObj).save();
+        res.redirect(`/monitor/checkEmailScheduler`);
+    }
+});
 
-    Monitor(DBObj).save();
-    res.redirect(`/tracking/prod/${productID}`);
+router.get('/checkEmailScheduler', async (req, res) => {
+    let {interval, email} = await getNextTimeInterval();
+    console.log(interval);
+    if (!running) {
+        setInterval(() => {
+            // console.log(getNextTimeInterval());
+            console.log(`email to ${email}`);
+
+        }, interval);
+    }
+    res.redirect('/tracking');
 });
 
 module.exports = router;

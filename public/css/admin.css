@@ -10,6 +10,8 @@
   --gray-primary: rgb(211, 211, 211);
   --orange-primary: hsl(0, 100%, 63%);
   --orange-secondary: hsl(0, 100%, 67%);
+  --blue-primary: hsl(235.4, 90.8%, 74.5%);
+  --blue-secondary: hsl(235.4, 90.8%, 70.5%);
 }
 
 /* Reseting basic styling. */
@@ -103,6 +105,42 @@
 
 .btn:active {
   background-color: var(--main-clr);
+}
+
+.btn-2 {
+  color: var(--blue-primary);
+  font-size: 1.2rem;
+  padding: 0.5em;
+  border: 2px solid var(--blue-primary);
+  background-color: transparent;
+  outline: 0;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+.btn-2:hover,
+.btn-2:focus {
+  color: var(--blue-secondary);
+  border: 2px solid var(--blue-secondary);
+}
+
+.btn-2:active {
+  color: var(--blue-primary);
+  border: 2px solid var(--blue-primary);
+}
+
+.scrap-btn {
+  color: white;
+  background-color: var(--blue-primary);
+}
+
+.scrap-btn:hover,
+.scrap-btn:focus {
+  background-color: var(--blue-secondary);
+}
+
+.scrap-btn:active {
+  background-color: var(--blue-primary);
 }
 
 .btn-form {
@@ -209,17 +247,33 @@
   background-color: var(--orange-primary);
 }
 
-.settings-panel {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 5px;
-  margin: 5px;
+.scrap-form {
+  max-width: 30rem;
 }
 
-.settings-panel select {
-  margin-left: 10px;
+.settings-panel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.settings-panel > * {
+  margin-left: 0.5em;
 }
 
 .misc-status {
-  margin-top: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3rem;
+}
+
+.select {
+  font-family: 'Roboto', sans-serif;
+  padding: 0.25em 0.5em;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.divider {
+  width: 100%;
+  border-bottom: 1px solid var(--gray-primary);
 }

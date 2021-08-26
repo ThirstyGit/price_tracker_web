@@ -42,30 +42,33 @@
         </div>
       </div>
       <div class="main-element hidden" id="scrap">
-        <button class="btn" id="scrap-btn">Start Scrap</button>
-        <button class="btn" id="stop-scrap-btn">Stop Scrap</button>
-        <!-- Following paragraph will hold the status about scheduling -->
-        <p class="misc-status" id="status"></p>
-        <div class="settings-panel">
-          <p class="misc-status">run scheduling for every   </p>
-          
 
-          <select onchange="createCronExpr()" name="" id="quantity">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-          <select onchange="createCronExpr()" name="" id="hour-or-minute">
-            <option value="minutes">minutes</option>
-            <option value="hourse">hours</option>
-          </select> <br>
+        <div class="form scrap-form">
+        <!-- Following paragraph will hold status for scheduling -->
+      <p class="misc-status" id="status"></p>
+      <p class="misc-status">Run scheduling for every</p>
+      <div class="settings-panel">
+        <select class="select" onchange="createCronExpr()" name="" id="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <select class="select" onchange="createCronExpr()" name="" id="hour-or-minute">
+          <option value="minutes">minutes</option>
+          <option value="hourse">hours</option>
+        </select>
+      </div>
+      <button class="btn scrap-btn" id="scrap-btn">Start Scrap</button>
+      <div class="divider"></div>
+      <button class="btn-2" id="stop-scrap-btn">Stop Scrap</button>
+
           
         </div>
       </div>

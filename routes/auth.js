@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
       type
     });
     user.save();
-    res.json({ message: "success" });
+    res.redirect('/auth/login');
   }
 });
 
@@ -50,6 +50,15 @@ router.post('/login', async (req, res) => {
   else {
     res.redirect('/auth/login');
   }
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    }
+    res.redirect("/");
+  });
 });
 
 module.exports = router;

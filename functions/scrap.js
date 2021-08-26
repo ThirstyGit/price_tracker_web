@@ -62,7 +62,12 @@ async function scrap(url, params, cb) {
               price: data.price,
             },
           ],
-        }).save();
+        }).save()
+        .catch(err => {
+          // Do Nothing right now. This just prevents showing error
+          // when could not get price data because the class is 
+          // different for sales.
+        });
       }
     });
   }

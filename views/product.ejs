@@ -34,7 +34,7 @@
 </body>
 <script>
     var ctx = document.getElementById('priceGraph').getContext('2d');
-    let prices = <%- JSON.stringify(prices) %>; // shed blood figuring this wired ejs syntax! 
+    let prices = <%- JSON.stringify(prices) %>; // shed blood figuring this weird ejs syntax! 
     let times = <%- JSON.stringify(times) %>; // needs to be changed to a full date
     let MAX = Math.max.apply(Math, prices) + Math.max.apply(Math, prices) * 0.3; // calculating max
 

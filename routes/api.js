@@ -21,12 +21,12 @@ router.post('/scrap', async (req, res) => {
       // el.destroy(); Why it didn't work?
     });
     running = false;
-  } 
+  }
   const _expr = req.body.cronExpr;
   // console.log(_expr);
   const results = await Scrape.find();
   startTime = Date.now();
-  running = true; 
+  running = true;
   cron.schedule(_expr, () => {
     console.log(`scraping going on: ${new Date().toString()}`);
     results.forEach(result => {
@@ -40,27 +40,27 @@ router.post('/scrap', async (req, res) => {
 router.post('/stopscraping', async (req, res) => {
   running = false;
   // console.log(cron.getTasks())
-  console.log(`This schedule is running for ${(Date.now() - startTime)/1000/60} minutes`);
+  console.log(`This schedule is running for ${(Date.now() - startTime) / 1000 / 60} minutes`);
   let jobs = cron.getTasks();
   if (jobs.length != 0) {
     jobs.forEach((el) => {
       el.stop();
       // el.destroy(); Why it didn't work?
     });
-  } 
-  res.json({msg: "duh!"});
+  }
+  res.json({ msg: "duh!" });
 
-  
+
 });
 
 router.post('/log', (req, res) => {
-  res.json({running});
+  res.json({ running });
 });
 
 
 // Get routes
 router.get('/scrap', async (req, res) => {
-  if(req.query.name) {
+  if (req.query.name) {
     const searchValue = req.query.name.replace(" ", "|");
     const data = await Scrape.find({ url: new RegExp(searchValue, "i") });
     res.json(data);

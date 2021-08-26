@@ -87,6 +87,30 @@ const scrapeSchema = new mongoose.Schema({
   }
 });
 
+const monitorSchema = new mongoose.Schema({
+  productID: {
+    type: String,
+    required: true
+  },
+  minDesiredPrice: {
+    type: Number,
+    required: true
+  },
+  nextTime: {
+    type: String,
+    required: true
+  },
+  emailTo: {
+    type: String,
+    required: true
+  },
+  increaseNext: {
+    type: String,
+    required: true
+  }
+});
+
 module.exports.User = mongoose.model("user", userSchema);
 module.exports.Products = mongoose.model("product", productSchema);
 module.exports.Scrape = mongoose.model("scrape", scrapeSchema);
+module.exports.Monitor = mongoose.model("monitor", monitorSchema);

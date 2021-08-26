@@ -25,6 +25,34 @@
             </svg>
             Go back
         </a>
+
+        <form class="monitor-panel" action="/monitor/createSchedule" method="post">
+            <p>check the product with id</p>
+            <input type="text" name="productID" id="" value="<%= ID %>">
+            <p>check after </p>
+            <select name="interval" id="interval">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select class="select" name="hourOrMinute" id="hour-or-minute">
+                <option value="0">minutes</option>
+                <option value="1">hours</option>
+              </select>
+            <p> and send mail to </p>
+            <input type="email" name="emailOfRequester" id="">
+            <p>if price drop below </p>
+            <input type="number" name="minimumDesiredPriceOfRequester">
+            <button class="btn btn-secondary" type="submit">Done!</button>
+        </form>
+
         <h3 class="text-center"><%= title %></h3>
         <p class="text-center text-muted">Recent Price History 💸 💸</p>
 
@@ -76,5 +104,6 @@
     }
 });
 </script>
+
 
 </html>

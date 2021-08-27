@@ -24,9 +24,17 @@ const getNextTimeInterval = async () => {
     return {interval: interval < 0 ? 0 : interval, Id: currDatabase[0].productID};
 }
 
-const testDB = async () => {
+const purifyDB = async () => {
     const currDatabase = await Monitor.find({}).sort({'nextTime': 1});
-    console.log(parseInt(currDatabase[0].nextTime) < Date.now());
+    console.log(currDatabase.length);
+    let i = 0;
+    currDatabase.forEach(el => {
+        if(parseInt(el.nextTime) < Date.now()) {
+            console.log(i++, 'shit!')
+            el.nextTime = this.CalculateNextTime(el.increaseNext);
+            el.save();
+        }
+    });
 }
 
 module.exports.Min = min;

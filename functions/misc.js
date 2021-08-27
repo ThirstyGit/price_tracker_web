@@ -15,14 +15,12 @@ const calculateNextTime = (nextFormat) => {
 }
 
 const getNextTimeInterval = async () => {
-    // await Monitor.deleteMany({emailTo: "jimmashuke@gmail.com"});
+    
     const currDatabase = await Monitor.find({}).sort({'nextTime': 1});
-    // console.log(currDatabase[0].nextTime, parseInt(currDatabase[0].nextTime) - Date.now() );
-    // const filterDB = currDatabase.filter((a) => a.nextTime.includes(':'));
-    // const sortedDB = currDatabase.sort((a, b) => a.nextTime - b.nextTime)
-    // console.log(sortedDB);
+    
     const interval = parseInt(currDatabase[0].nextTime) - Date.now();
-    return {interval: interval < 0 ? 0 : interval, email: currDatabase[0].emailTo, id: currDatabase[0].productID};
+    console.log(`function genNextTimeInterval: ${interval}`);
+    return interval < 0 ? 0 : interval;
 }
 
 module.exports.Min = min;

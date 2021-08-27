@@ -29,14 +29,45 @@ router.post("/createSchedule", async (req, res) => {
 });
 
 router.get('/checkEmailScheduler', async (req, res) => {
-    let { interval, email, id } = await getNextTimeInterval();
+    let { interval, email, Id } = await getNextTimeInterval();
+    let r;
     console.log(`Route checkEmailScheduler: ${interval}`);
     if (!running) {
+        const generateAnotherChild = async (INT, EMAIL, pid) => {
+            console.log(`Time set after ${INT}ms`);
+            setTimeout(async () => {
+                // console.log(getNextTimeInterval());
+            // interval = Infinity;
+            console.log("aaa", pid);
+            const results = await Products.find({ _id: pid });
+            const monitorThis = await Monitor.find({ productID: pid });
+            monitorThis[0].nextTime = CalculateNextTime(monitorThis[0].increaseNext);
+            monitorThis[0].save();
+            // console.log("what!??1?");
+
+            // console.log(results);
+            const scrapingResults = await Scrape.find({ url: results[0].link });
+            // console.log(scrapingResults);
+            // console.log("what!???2");
+
+            await scrap(scrapingResults[0].url, scrapingResults[0].params, async () => {
+                console.log("Scraping done for mailing...");
+                const lastPriceObj = await Products.find({ _id: pid });
+                console.log(lastPriceObj[0].price_history[lastPriceObj[0].price_history.length - 1].price)
+
+                console.log(`email to ${email}`);
+            });
+
+            // console.log("what!???3");
+            }, INT);
+            r = await getNextTimeInterval();
+            generateAnotherChild(r.interval, "khatarnak@gmail.com" , r.Id);
+        }
         setTimeout(async () => {
             // console.log(getNextTimeInterval());
             // interval = Infinity;
-            const results = await Products.find({ _id: id });
-            const monitorThis = await Monitor.find({ productID: id });
+            const results = await Products.find({ _id: Id });
+            const monitorThis = await Monitor.find({ productID: Id });
             monitorThis[0].nextTime = CalculateNextTime(monitorThis[0].increaseNext);
             monitorThis[0].save();
             console.log("what!??1?");
@@ -48,7 +79,7 @@ router.get('/checkEmailScheduler', async (req, res) => {
 
             await scrap(scrapingResults[0].url, scrapingResults[0].params, async () => {
                 console.log("Scraping done for mailing...");
-                const lastPriceObj = await Products.find({ _id: id });
+                const lastPriceObj = await Products.find({ _id: Id });
                 console.log(lastPriceObj[0].price_history[lastPriceObj[0].price_history.length - 1].price)
 
                 console.log(`email to ${email}`);
@@ -56,32 +87,9 @@ router.get('/checkEmailScheduler', async (req, res) => {
 
             console.log("what!???3");
 
-            setTimeout(() => {
-                // console.log(getNextTimeInterval());
-            // interval = Infinity;
-            const results = await Products.find({ _id: id });
-            const monitorThis = await Monitor.find({ productID: id });
-            monitorThis[0].nextTime = CalculateNextTime(monitorThis[0].increaseNext);
-            monitorThis[0].save();
-            console.log("what!??1?");
+             r = await getNextTimeInterval();
 
-            // console.log(results);
-            const scrapingResults = await Scrape.find({ url: results[0].link });
-            // console.log(scrapingResults);
-            console.log("what!???2");
-
-            await scrap(scrapingResults[0].url, scrapingResults[0].params, async () => {
-                console.log("Scraping done for mailing...");
-                const lastPriceObj = await Products.find({ _id: id });
-                console.log(lastPriceObj[0].price_history[lastPriceObj[0].price_history.length - 1].price)
-
-                console.log(`email to ${email}`);
-            });
-
-            console.log("what!???3");
-            }, await getNextTimeInterval());
-
-
+            generateAnotherChild(r.interval, "bloody@gmail.com",  r.Id);
         }, interval);
     }
     res.redirect('/tracking');

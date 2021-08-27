@@ -20,9 +20,16 @@ const getNextTimeInterval = async () => {
     
     const interval = parseInt(currDatabase[0].nextTime) - Date.now();
     console.log(`function genNextTimeInterval: ${interval}`);
-    return interval < 0 ? 0 : interval;
+    console.log(currDatabase[0].productID);
+    return {interval: interval < 0 ? 0 : interval, Id: currDatabase[0].productID};
+}
+
+const testDB = async () => {
+    const currDatabase = await Monitor.find({}).sort({'nextTime': 1});
+    console.log(parseInt(currDatabase[0].nextTime) < Date.now());
 }
 
 module.exports.Min = min;
 module.exports.CalculateNextTime = calculateNextTime;
 module.exports.getNextTimeInterval = getNextTimeInterval;
+module.exports.testDB = testDB;

@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const { Monitor } = require('../database/database');
+const { Monitor, Products, Scrape } = require('../database/database');
 const {CalculateNextTime, getNextTimeInterval} = require('../functions/misc');
+const scrap = require('../functions/scrap');
 let running = false;
 
 router.post("/createSchedule", async (req, res) => {
@@ -28,11 +29,30 @@ router.post("/createSchedule", async (req, res) => {
 });
 
 router.get('/checkEmailScheduler', async (req, res) => {
-    let {interval, email} = await getNextTimeInterval();
+    let {interval, email, id} = await getNextTimeInterval();
     console.log(interval);
     if (!running) {
-        setInterval(() => {
+        setInterval(async () => {
             // console.log(getNextTimeInterval());
+            interval = Infinity;
+            const results = await Products.find({_id: id});
+            const monitorThis = await Monitor.find({productID: id});
+            monitorThis[0].nextTime = CalculateNextTime(monitorThis[0].increaseNext);
+            monitorThis[0].save();
+            const rrr = await getNextTimeInterval();
+            interval = rrr.interval;
+            email = rrr.email;
+            id = rrr.id;
+
+            // console.log(results);
+            const scrapingResults = await Scrape.find({url: results[0].link});
+            // console.log(scrapingResults);
+
+            scrap(scrapingResults[0].url, scrapingResults[0].params);
+
+            const lastPriceObj = await Products.find({_id: id});
+            console.log(lastPriceObj[0].price_hostory[lastPriceObj[0].price_hostory.length - 1].price)
+
             console.log(`email to ${email}`);
 
         }, interval);

@@ -10,7 +10,7 @@ const calculateNextTime = (nextFormat) => {
     const minutes = time.getMinutes();
     const nextArray = nextFormat.split(":");
 
-    return nextArray[1] == "H" ?  Date.now() + nextArray[0] * 60 * 60 * 1000 : Date.now() + nextArray[0] * 60 * 1000;
+    return nextArray[1] == "H" ?  Date.now() + parseInt(nextArray[0]) * 60 * 60 * 1000 : Date.now() + parseInt(nextArray[0]) * 60 * 1000;
     
 }
 
@@ -22,7 +22,7 @@ const getNextTimeInterval = async () => {
     // const sortedDB = currDatabase.sort((a, b) => a.nextTime - b.nextTime)
     // console.log(sortedDB);
     const interval = parseInt(currDatabase[0].nextTime) - Date.now();
-    return {interval: interval < 0 ? 0 : interval, email: currDatabase[0].emailTo};
+    return {interval: interval < 0 ? 0 : interval, email: currDatabase[0].emailTo, id: currDatabase[0].productID};
 }
 
 module.exports.Min = min;

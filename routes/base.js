@@ -38,5 +38,16 @@ router.put('/userEditInfo', async (req, res) => {
   res.send("");
 })
 
+router.put('/changepassword', async (req, res) => {
+
+  req.body.password = bcrypt.hashSync(req.body.password, 14);
+  const user= await User.findOneAndUpdate(
+    {_id:req.user._id},
+    { $set: { password:req.body.password}}   
+  );
+  user.save();
+  //console.log(req.user);
+  res.send("");
+})
 
 module.exports = router;

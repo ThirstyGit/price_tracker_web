@@ -26,7 +26,7 @@
              </div>
              <div class="user-container">
                 <div class="form-container" id="info-change-container">
-                    <form action="/user" method="PUT" class="form" id="user-form">
+                    <form class="form" id="user-form">
                        <label>Name: </label>
                        <input class="form-input" type="text" name="name" id="name" value="<%=user.name%>">
                        <label>Email: </label>
@@ -35,7 +35,7 @@
                     </form>
                  </div>
                 <div class="form-container hidden" id="password-change-container">
-                    <form class="form" id="password-form">
+                    <form action="/changepassword" method="PUT" class="form" id="password-form">
                         <label>Password: </label>
                         <input class="form-input" type="password" name="password" id="password">
                         <label>Password Confirm: </label>

@@ -87,6 +87,28 @@ const scrapeSchema = new mongoose.Schema({
   }
 });
 
+const requestSchema = new mongoose.Schema({
+  user_id: {
+    type: ObjectId,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  website: {
+    type: String,
+    requried: true,
+  },
+  website: {
+    type: String,
+    requried: true,
+  },
+});
+
+
+
 module.exports.User = mongoose.model("user", userSchema);
 module.exports.Products = mongoose.model("product", productSchema);
 module.exports.Scrape = mongoose.model("scrape", scrapeSchema);
+module.exports.Request = mongoose.model("scrape", requestSchema);

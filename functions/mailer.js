@@ -1,7 +1,7 @@
 
 const nodemailer = require("nodemailer");
 
-async function mail(subj, body) {
+async function mail(to, product, price) {
   let testAccount = await nodemailer.createTestAccount();
 
   let transporter = nodemailer.createTransport({
@@ -17,9 +17,13 @@ async function mail(subj, body) {
   try {
     let info = await transporter.sendMail({
         from: '"Price Tracker Organization 👻" <noreply.pricedown@gmail.com>', 
-        to: "jimmashuke@gmail.com", 
-        subject: `${subj}`, 
-        text: `${body}`, 
+        to: `${to}`, 
+        subject: `Your favorite product's price is down!`, 
+        text: ``,
+        html: `<html><body>
+            <h2>Ready to buy???</h2>
+            You told us to remind when ${product}'s price goes down. There! It's down to ${price} now!.
+        </body></html>` 
         
       });
       console.log("Message sent: %s", info.messageId);

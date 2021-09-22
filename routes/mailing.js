@@ -4,8 +4,8 @@ var router = express.Router();
 const {mail} = require('../functions/mailer');
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-    
-    mail();
+
+    mail(req.body.email, req.body.product, req.body.currPrice);
 });
 
 module.exports = router;

@@ -8,8 +8,9 @@ const { User } = require('../database/database.js');
 /*router.get('/', function(req, res, next) {
   res.status(200).send("Came from the wild...");
 });*/
-router.get('/', (req, res) => {
-  res.render("homepage", { user: req.user });
+router.get('/', async (req, res) => {
+
+  res.render("homepage", { user: req.user});
 })
 
 router.get('/user', (req, res) => {

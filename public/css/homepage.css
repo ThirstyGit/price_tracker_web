@@ -6,16 +6,12 @@
 body{
     background-color: rgb(241, 244, 246);
 }
-.nav a{
-    text-decoration: none;
-    color:whitesmoke;
-}
-
+/*
 .nav2 a{
     text-decoration: none;
     color:black;
 
-}
+}*/
 .nav-container{
     position: sticky;
     top:0px;
@@ -28,6 +24,8 @@ body{
     align-items: center;
 }
 .nav-anchor {
+    text-decoration: none;
+    color:whitesmoke;
     font-size: 1.3rem;
     font-family: 'Charm', cursive;
 }
@@ -49,13 +47,13 @@ body{
 
 .nav2{
     display: flex;
-    background-color:white;
+    background-color: rgb(241, 244, 246)te;
     padding: 1em 1em;
+    text-align: center;
     justify-content: space-around;
 }
 .nav2 a:hover{
     color:blue;
-
 }
 
 

@@ -15,58 +15,42 @@
         <div class="search-bar-conteiner">
             <input class="search-bar" id="search-bar" type="text" placeholder="Search...">
         </div>
-        <% if(!user) { %>
+       <!-- <% if(!user) { %>
             <a class="nav-anchor" href="/auth/login"><b>Login</b></a>
         <% } else { %>
             <a class="nav-anchor" href="/auth/logout">Logout</a>
-        <% } %>
+        <% } %>-->
+
+
+        <!--DropDown-Hamburgure -->
+        <div class="dropdown-container">
+            <button id="dropdown-hamburger" class="dropdown-hamburger">&#9776;</button>
+            <ul id="dropdown" class="dropdown">
+               <%if(user) {%>
+                  <li><a class="dc-anchor" href="/user">Profile</a></li>
+                  <li><a class="dc-anchor" href="/admin">Admin Panel</a></li>
+                  <%if(user.type === 'admin') {%>
+                     <li><a class="dc-anchor" href="/admin">Admin Panel</a></li>
+                  <%}%>
+                  <li><a class="dc-anchor" href="/tracking">Price Tracking</a></li>
+                  <li><a class="dc-anchor" href="/auth/logout">Sign Out</a></li>
+               <%} else {%>
+                  <li><a class="dc-anchor" href="/auth/login">Sign In</a></li>
+                  <li><a class="dc-anchor" href="/auth/register">Sign Up</a></li>
+               <%}%>
+            </ul>
+         </div>
      </nav>
      <nav class="nav2">
         <div>
-            <a href="">alibaba.com</a>
+            <marquee>
+              <h3 class="header">Welcome to Price_Tracker Website</h3>
+            </marquee>
         </div>
-        <div>
-            <a href="">bikroy.com</a>
-        </div>
-        <div>
-            <a href="">amazon.com</a>
-        </div>
-        <div>
-            <a href="">chaldal.com</a>
-        </div>
-        <div>
-            <a href="">jadroo.com</a>
-        </div>
-
      </nav>
     </nav>
- 
-<!--Main BODY PART-->
-    <div class="conteiner">
-        <div class="side-image">
-            <h3 class="header">Welcome to Price_Tracker Website</h3>
-           <img class="image" src="https://www.price2spy.com/blog/wp-content/uploads/2021/01/eCommerce-Price-Tracker-1.png">
-        </div>
-
-        <div class="box2">
-            <diV>
-                <a class="side-info" href="">Product</a>
-            </diV>
-            <% if(user) { %>
-                <diV>
-                    <a class="side-info"  href="/admin">Admin</a>
-                </diV>
-                <diV>
-                    <a class="side-info"  href="/user">Profile</a>
-                </diV>
-                <diV>
-                    <a class="side-info"  href="/tracking">Price Tracking</a>
-                </diV>
-            <% } %>
-        </div>
-
-        </div>
-    </div>
+      
+    <script type="text/javascript" src="/js/homepage.js"></script>
 
 </body>    
 </html>

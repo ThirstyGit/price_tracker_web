@@ -1,6 +1,7 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
 const { Products } = require("../database/database.js");
+const { data } = require('cheerio/lib/api/attributes');
 
 async function scrap(url, params, cb) {
   // Requesting the page and loading it to cheerio.
@@ -73,7 +74,8 @@ async function scrap(url, params, cb) {
   }
 
   // Running any callback if passed.
-  if (cb) cb();
+  if (cb) cb(productData);
+  // return data.price;
 };
 
 module.exports = scrap;

@@ -29,6 +29,7 @@
         <form class="monitor-panel" action="/monitor/createSchedule" method="post">
             <p>check the product with id</p>
             <input type="text" name="productID" id="" value="<%= ID %>">
+            <input type="text" name="link" id="" value="<%= link %>">
             <p>check after </p>
             <select name="interval" id="interval">
                 <option value="1">1</option>
@@ -54,6 +55,7 @@
         </form>
 
         <h3 class="text-center"><%= title %></h3>
+        <a href="/mail">yo</a>
         <p class="text-center text-muted">Recent Price History 💸 💸</p>
 
         <canvas id="priceGraph" width="200" height="200"></canvas>

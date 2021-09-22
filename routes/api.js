@@ -9,6 +9,7 @@ let startTime = 0;
 let running = false;
 let _expr = null;
 const { mail } = require('../functions/mailer');
+
 router.post('/scrap', async (req, res) => {
   let jobs = cron.getTasks();
   if (jobs.length != 0) {
@@ -30,13 +31,13 @@ router.post('/scrap', async (req, res) => {
       
       const { url, params } = result;
       scrap(url, params, async (productData) => {
-        console.log(`god does it work? ${productData}`);
+        // console.log(`god does it work? ${productData}`);
         productData.forEach(async (el) => {
           // console.log(el.price);
           const justPrice = parseFloat(el.price.replace(/[^\d.-]/g,''));
           const monitorDB = await Monitor.find({link: url}).where('minDesiredPrice').gt(justPrice + 1);
-          console.log(monitorDB);
-          console.log(justPrice);
+          // console.log(monitorDB);
+          // console.log(justPrice);
           monitorDB.forEach(shit => {
             mail(shit.emailTo, el.name, el.price);
           })
@@ -45,12 +46,6 @@ router.post('/scrap', async (req, res) => {
       // console.log(price);
     });
   });
-
-
-
-
-
-  // Monitoring price and sending email if needed.
 
 
 

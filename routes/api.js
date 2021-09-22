@@ -28,7 +28,14 @@ router.post('/scrap', async (req, res) => {
     results.forEach(result => {
       
       const { url, params } = result;
-      scrap(url, params);
+      scrap(url, params, async (productData) => {
+        console.log(`god does it work? ${productData}`);
+        productData.forEach(async (el) => {
+          console.log(el.price);
+          // const monitorDB = await Monitor.find({link: url}).where('minDesiredPrice').lt(el.price + 1);
+
+        })
+      });
       // console.log(price);
     });
   });

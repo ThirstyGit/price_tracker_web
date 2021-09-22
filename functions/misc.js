@@ -40,4 +40,3 @@ const purifyDB = async () => {
 module.exports.Min = min;
 module.exports.CalculateNextTime = calculateNextTime;
 module.exports.getNextTimeInterval = getNextTimeInterval;
-module.exports.testDB = testDB;

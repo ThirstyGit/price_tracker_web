@@ -31,9 +31,11 @@ router.post('/scrap', async (req, res) => {
       scrap(url, params, async (productData) => {
         console.log(`god does it work? ${productData}`);
         productData.forEach(async (el) => {
-          console.log(el.price);
-          // const monitorDB = await Monitor.find({link: url}).where('minDesiredPrice').lt(el.price + 1);
-
+          // console.log(el.price);
+          const justPrice = parseFloat(el.price.replace(/\D/g,''));
+          const monitorDB = await Monitor.find({link: url}).where('minDesiredPrice').gt(justPrice + 1);
+          console.log(monitorDB);
+          console.log(justPrice);
         })
       });
       // console.log(price);

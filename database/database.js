@@ -107,6 +107,10 @@ const monitorSchema = new mongoose.Schema({
   increaseNext: {
     type: String,
     required: true
+  },
+  link: {
+    type: String,
+    required: true
   }
 });
 

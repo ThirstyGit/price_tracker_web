@@ -32,8 +32,7 @@ router.post("/createSchedule", async (req, res) => {
 });
 
 router.get('/hitScraping', async (req, res) => {
-    // const currState = await Monitor.find();
-    // console.log(currSa);
+    
     axios.post('http://localhost:3333/api/log', {
 
     })

@@ -2,7 +2,7 @@
 const nodemailer = require("nodemailer");
 
 async function mail(to, product, price) {
-  let testAccount = await nodemailer.createTestAccount();
+//   let testAccount = await nodemailer.createTestAccount();
 
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -26,9 +26,9 @@ async function mail(to, product, price) {
         </body></html>` 
         
       });
-      console.log("Message sent: %s", info.messageId);
+    //   console.log("Message sent: %s", info.messageId);
   
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   } catch (error) {
       console.error(error);
   }

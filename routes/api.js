@@ -1,12 +1,13 @@
 // Importing necessary modules.
 const router = require('express').Router();
+const axios = require('axios');
 // Importing user defined modules.
 const scrap = require('../functions/scrap.js');
-const { Scrape } = require("../database/database.js");
+const { Scrape, Monitor } = require("../database/database.js");
 let cron = require('node-cron');
 let startTime = 0;
 let running = false;
-
+let _expr = null;
 router.post('/scrap', async (req, res) => {
   let jobs = cron.getTasks();
   if (jobs.length != 0) {
@@ -16,7 +17,8 @@ router.post('/scrap', async (req, res) => {
     });
     running = false;
   } 
-  const _expr = req.body.cronExpr;
+  
+  _expr = req.body.cronExpr;
   // console.log(_expr);
   const results = await Scrape.find();
   startTime = Date.now();
@@ -24,10 +26,26 @@ router.post('/scrap', async (req, res) => {
   cron.schedule(_expr, () => {
     console.log(`scraping going on: ${new Date().toString()}`);
     results.forEach(result => {
+      
       const { url, params } = result;
       scrap(url, params);
+      // console.log(price);
     });
   });
+
+
+
+
+
+  // Monitoring price and sending email if needed.
+
+
+
+
+
+
+
+
   res.json({ message: 'Success' });
 });
 
@@ -53,7 +71,7 @@ router.post('/stopscraping', async (req, res) => {
       // el.destroy(); Why it didn't work?
     });
   } 
-  res.json({msg: "duh!"});
+  res.json({msg: "duh!", _expr});
 
   
 });

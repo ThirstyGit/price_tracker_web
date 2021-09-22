@@ -1,6 +1,7 @@
-// All module imports.
+// All External module imports.
 const express = require('express');
 const sessions = require("express-session");
+
 require('dotenv').config(); // Getting all the environment variables.
 
 // Importing middleware modules.

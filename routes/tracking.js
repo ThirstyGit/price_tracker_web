@@ -1,9 +1,12 @@
+// Importing external modules
 var express = require('express');
-var router = express.Router();
+// Importing internal modules
 const { Products } = require('../database/database');
-/* GET home page. */
-router.get('/', async (req, res, next) => {
 
+var router = express.Router();
+
+// Router ends
+router.get('/', async (req, res, next) => {
     let currProducts = await Products.find();
     let refinedArray = [];
     currProducts.forEach(el => {
@@ -27,6 +30,7 @@ router.get('/', async (req, res, next) => {
     res.render('tracking', { products: refinedArray });
 });
 
+// Receive ID of a specific product to show its' price history in graph
 router.get('/prod/:id', async (req, res) => {
     const ID = req.params.id;
     const desiredProduct = await Products.find({_id: ID});

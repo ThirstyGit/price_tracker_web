@@ -16,6 +16,8 @@ const authRouter = require('./routes/auth');
 const trackingRouter = require('./routes/tracking');
 const adminRouter = require('./routes/admin');
 const apiRouter = require('./routes/api');
+const monitorRouter = require('./routes/monitor');
+const mailingRouter = require('./routes/mailing');
 
 // app configs
 app.use(express.json());
@@ -40,19 +42,19 @@ app.use('/images', express.static(__dirname + '/public/images'));
 app.use('/favicon.ico', express.static(__dirname + '/favicon.ico'));
 app.set('view engine', 'ejs');
 
-
 // All routes for our website.
 app.use('/', baseRouter);
 app.use('/auth', authRouter);
 app.use('/tracking', trackingRouter);
 app.use('/admin', adminRouter);
 app.use('/api', apiRouter);
+app.use('/monitor', monitorRouter);
+app.use('/mail', mailingRouter);
 
 // redirecting every other requests as error
 app.use((req, res) => {
     res.status(404).render('404')
 });
-
 
 // Listen @ designated port
 const PORT = process.env.NODE_PORT || 3333;

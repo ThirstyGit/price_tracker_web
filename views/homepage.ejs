@@ -13,13 +13,10 @@
      <nav class="nav">
         <a class="nav-anchor" href="/"><p class="nav-anchor">Price_Tracker</p></a>
         <div class="search-bar-conteiner">
+         <%if(user) {%>
             <input class="search-bar" id="search-bar" type="text" placeholder="Search...">
+            <%}%>
         </div>
-       <!-- <% if(!user) { %>
-            <a class="nav-anchor" href="/auth/login"><b>Login</b></a>
-        <% } else { %>
-            <a class="nav-anchor" href="/auth/logout">Logout</a>
-        <% } %>-->
 
 
         <!--DropDown-Hamburgure -->
@@ -49,6 +46,22 @@
         </div>
      </nav>
     </nav>
+
+    <div class="main-body">
+        <h1>Recent products</h1>
+        <div class="card-container">
+           <%products.forEach(product => {%>
+              <a class="card" href="/tracking/prod/<%=product._id%>">
+                 <img src="<%=product.image%>" class="card-image">
+                 <p class="card-name"><%=product.name%></p>
+                 <p class="card-price">Price:<%=product.price_history[0].price.substring(1) %></p>
+              </a>
+           <%})%>
+        </div>
+    </div>
+
+    
+
       
     <script type="text/javascript" src="/js/homepage.js"></script>
 

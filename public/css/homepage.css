@@ -47,7 +47,7 @@ body{
 
 .nav2{
     display: flex;
-    background-color: rgb(241, 244, 246)te;
+    background-color: rgb(241, 244, 246);
     padding: 1em 1em;
     text-align: center;
     justify-content: space-around;
@@ -56,40 +56,50 @@ body{
     color:blue;
 }
 
-
-/*.........NEW CODE CSS..............*/
-.conteiner{
-     display: flex;
-    justify-content: space-between;
-}
 .header{
     font-family: 'Courier New', Courier, monospace;
     font-size: 30Px;
     color:#333;
     padding-bottom: 1em;
 }
-.side-image{
-    background-color: rgb(241, 244, 246);
-    padding: 1em 1em 1em 1em;
-    flex: 3;
-    text-align: center;
-}
-.image{
-    width: 60%;
-    height: 150%;
-}
-.box2{
-    flex: 2;
-    text-align: center;
-}
-.box2 div{
-    border: 1px #ccc solid;
-    padding: 10px;
-    margin: 10px;
-    background-color:#333;
-    flex: 2;
-}
-.side-info{
-    color: whitesmoke;
+/*.........NEW CODE CSS..............*/
+
+/******MAIN BODY**********/
+.main-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+ }
+ .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0rem;
+    max-width: 90rem;
+    overflow: hidden;
+    justify-content: center;
+ }
+ .card {
     text-decoration: none;
-}
+    margin: 0.5rem 1rem;
+ }
+ .card:hover {
+    opacity: 0.8;
+ }
+ .card-image {
+    width: 20rem;
+    height: 15rem;
+    margin-bottom: 1rem;
+ }
+ .card-name {
+    color: #333;
+    width: 20rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0.5rem;
+ }
+ .card-price {
+    font-size: 0.9rem;
+    margin: 0.5rem;
+ }
+ 

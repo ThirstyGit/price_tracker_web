@@ -14,7 +14,7 @@
         crossorigin="anonymous"></script>
     <!-- ChartJS JS & CSS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
-
+    <link rel="stylesheet" href="/css/product.css">
 </head>
 
 <body>
@@ -26,25 +26,32 @@
             Go back
         </a>
 
-        <form class="monitor-panel" action="/monitor/createSchedule" method="post">
-            <p>check the product with id</p>
-            <input style="display: none;" type="text" name="productID" id="" value="<%= ID %>">
-            <input style="display: none;" type="text" name="link" id="" value="<%= link %>">
-            
-            <p> and send mail to </p>
-            <input type="email" name="emailOfRequester" id="">
-            <p>if price drop below </p>
-            <input type="number" name="minimumDesiredPriceOfRequester">
-            <button class="btn btn-secondary" type="submit">Done!</button>
-        </form>
+        <button class="btn btn-warning" onclick="openpop()">Watch</button>
 
+        <div class="popup">
+            <button class="close" onclick="closepop()">&times</button>
+            <form class="monitor-panel" action="/monitor/createSchedule" method="post">
+                <!-- <p>check the product with id</p> -->
+                <input style="display: none;" type="text" name="productID" id="" value="<%= ID %>">
+                <input style="display: none;" type="text" name="link" id="" value="<%= link %>">
+                
+                <p> Send mail to </p>
+                <input type="email" name="emailOfRequester" id="" placeholder="bill@gates.com">
+                <p>if price drop below </p>
+                <input type="number" name="minimumDesiredPriceOfRequester" placeholder="40$">
+                <button class="btn btn-success" type="submit">Done!</button>
+            </form>
+    
+        </div>
+        
         <h3 class="text-center"><%= title %></h3>
-        <a href="/mail">yo</a>
         <p class="text-center text-muted">Recent Price History 💸 💸</p>
 
         <canvas id="priceGraph" width="200" height="200"></canvas>
 
     </div>
+
+    <div id="overlay"></div>
 </body>
 <script>
     var ctx = document.getElementById('priceGraph').getContext('2d');
@@ -90,6 +97,6 @@
     }
 });
 </script>
-
+<script src="/js/product.js"></script>
 
 </html>

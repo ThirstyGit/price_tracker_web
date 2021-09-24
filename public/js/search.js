@@ -5,12 +5,18 @@ const searchSuggestions = document.querySelector("#search-suggestions");
 // Declarations.
 let timeoutId;
 
+// Functions.
+function deleteChilds(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
+
 // Fliter the products shown on the page based on the given data
 function filterProducts(datas) {
   // clear previous products.
-  while (cardContainer.firstChild) {
-    cardContainer.removeChild(cardContainer.firstChild);
-  }
+  deleteChilds(cardContainer);
+
   // Add new products based on the given data.
   for (let i in datas) {
     // Creating elements.
@@ -22,7 +28,7 @@ function filterProducts(datas) {
 
     // Assigning values.
     productImage.src = `${datas[i].image}`;
-    imageAnchor.href = `/tracking/prod/${datas[i].id}`;
+    imageAnchor.href = `/tracking/prod/${datas[i]._id}`;
     productName.innerText = datas[i].name;
     // Getting the most recent price.
     const price =
@@ -62,15 +68,16 @@ searchBar.addEventListener("keypress", (e) => {
 
 // Code for showing search suggestion.
 function addSuggestion(datas) {
+  // Remove previous suggestions.
+  deleteChilds(searchSuggestions);
   // Add suggestion for the first 10 data.
   for (i in datas) {
     if (i < 10) {
       // Creating elements.
       const li = document.createElement("li");
       const a = document.createElement("a");
-
       // Assigning values.
-      a.href = `/product/${datas[i].id}`; //Need to change this.
+      a.href = `/tracking/prod/${datas[i]._id}`; //Need to change this.
       a.innerText = datas[i].name;
 
       // Appending everything properly.
@@ -88,7 +95,7 @@ searchBar.addEventListener("keyup", (e) => {
   // if there is no value, search suggestions need to be cleared.
   timeoutId = setTimeout(() => {
     if (searchBar.value === "") {
-      //  clearSuggestion();
+      deleteChilds(searchSuggestions);
     }
     // Need to make sure that enter, up, down, left,
     // right key was not presed
@@ -104,9 +111,18 @@ searchBar.addEventListener("keyup", (e) => {
           return res.json();
         })
         .then((data) => {
-          // clearSuggestion();
           addSuggestion(data);
         });
     }
   }, 100);
+});
+
+// Things that should happen when clicked on the document.
+document.addEventListener("click", () => {
+  deleteChilds(searchSuggestions);
+  if (window.getComputedStyle(dropdown).opacity === "1") {
+    dropdown.style.opacity = 0;
+    dropdown.style.transform = "translateY(-20px)";
+    dropdown.style.pointerEvents = "none";
+  }
 });

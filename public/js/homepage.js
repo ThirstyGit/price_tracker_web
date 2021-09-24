@@ -1,7 +1,6 @@
 const dropdownHamburger = document.querySelector('#dropdown-hamburger');
 const dropdown = document.querySelector('#dropdown');
 
-//const searchBar = document.querySelector('#search-bar');
 
 // Open or close dropdown when clicked on hamburger.
 dropdownHamburger.addEventListener("click", () => {

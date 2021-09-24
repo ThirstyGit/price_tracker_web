@@ -4,7 +4,7 @@
   "description": "A website that will keep track of prices of certain websites.",
   "main": "index.js",
   "scripts": {
-    "run": "node index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "",

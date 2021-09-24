@@ -1,0 +1,13 @@
+:root {
+	--green-primary: hsl(146, 69%, 47%);
+	--green-secondary: hsl(146, 74%, 57%);
+}
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: Roboto, sans-serif;
+}
+a {
+	text-decoration: none;
+	color: black;
+}

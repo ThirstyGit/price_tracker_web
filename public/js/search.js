@@ -1,7 +1,7 @@
 const searchBar = document.querySelector('#search-bar');
 const cardContainer = document.querySelector('#card-container');
 
-
+let test;
 
 // Fliter the products shown on the page based on the given data
 function filterProducts(datas) {
@@ -10,13 +10,8 @@ function filterProducts(datas) {
     cardContainer.removeChild(cardContainer.firstChild);
   }
   // Add new products based on the given data.
-  //console.log(Array.isArray(datas))
-  const arr =datas;
-  /*for(let i in arr){
-    console.log(arr[i])
-
-  }*/
-  for(let i in arr){
+	datas = datas.searchproduct;
+  for(let i in datas) {
     // Creating elements.
     const product = document.createElement('div');
     const imageAnchor = document.createElement('a');
@@ -25,10 +20,12 @@ function filterProducts(datas) {
     const productPrice = document.createElement('p');
     
     // Assigning values.
-    productImage.src = `${arr[i].image}`;
-    imageAnchor.href = `/tracking/prod/${arr[i].id}`;
-    productName.innerText = arr[i].name;
-    productPrice.innerText = arr[i].price;
+    productImage.src = `${datas[i].image}`;
+    imageAnchor.href = `/tracking/prod/${datas[i].id}`;
+    productName.innerText = datas[i].name;
+		// Getting the most recent price.
+		const price = datas[i].price_history[datas[i].price_history.length - 1].price
+    productPrice.innerText = price;
 
     // Assigning classes
     product.classList.add('product');
@@ -42,35 +39,7 @@ function filterProducts(datas) {
     product.appendChild(productPrice);
     product.appendChild(imageAnchor);
     cardContainer.appendChild(product);
-
   }
- /* datas.forEach(data => {
-      // Creating elements.
-      const product = document.createElement('div');
-      const imageAnchor = document.createElement('a');
-      const productImage = document.createElement('img');
-      const productName = document.createElement('p');
-      const productPrice = document.createElement('p');
-      
-      // Assigning values.
-      productImage.src = `${data.image}`;
-      imageAnchor.href = `/tracking/prod/${data.id}`;
-      productName.innerText = data.name;
-      productPrice.innerText = data.price;
-
-      // Assigning classes
-      product.classList.add('product');
-      productImage.classList.add('card-image');
-      productName.classList.add('card-name');
-      productPrice.classList.add('card-price');
-
-      // Appending everything properly.
-      imageAnchor.appendChild(productImage);
-      product.appendChild(productName);
-      product.appendChild(productPrice);
-      product.appendChild(imageAnchor);
-      cardContainer.appendChild(product);
-  });*/
 }
 
 

@@ -24,8 +24,8 @@ router.post('/scrap', async (req, res) => {
     });
     running = false;
 
-  } 
-  
+  }
+
   _expr = req.body.cronExpr;
 
   // console.log(_expr);
@@ -35,19 +35,22 @@ router.post('/scrap', async (req, res) => {
   cron.schedule(_expr, () => {
     console.log(`scraping going on: ${new Date().toString()}`);
     results.forEach(result => {
-      
+
       const { url, params } = result;
       scrap(url, params, async (productData) => {
         // console.log(`god does it work? ${productData}`);
         productData.forEach(async (el) => {
           // console.log(el.price);
-          const justPrice = parseFloat(el.price.replace(/[^\d.-]/g,''));
-          const monitorDB = await Monitor.find({link: url}).where('minDesiredPrice').gt(justPrice + 1);
-          // console.log(monitorDB);
-          // console.log(justPrice);
-          monitorDB.forEach(shit => {
-            mail(shit.emailTo, el.name, el.price);
-          })
+          try {
+            const justPrice = parseFloat(el.price.replace(/[^\d.-]/g, ''));
+            const monitorDB = await Monitor.find({ link: url }).where('minDesiredPrice').gt(justPrice + 1);
+            monitorDB.forEach(shit => {
+              mail(shit.emailTo, el.name, el.price);
+            });
+          } catch (error) {
+
+          }
+
         })
       });
       // console.log(price);
@@ -74,8 +77,8 @@ router.post('/stopscraping', async (req, res) => {
       el.stop();
       // el.destroy(); Why it didn't work?
     });
-  } 
-  res.json({msg: "duh!", _expr});
+  }
+  res.json({ msg: "duh!", _expr });
 
 
 });

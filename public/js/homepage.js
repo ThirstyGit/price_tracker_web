@@ -1,6 +1,8 @@
 const dropdownHamburger = document.querySelector('#dropdown-hamburger');
 const dropdown = document.querySelector('#dropdown');
 
+//const searchBar = document.querySelector('#search-bar');
+
 // Open or close dropdown when clicked on hamburger.
 dropdownHamburger.addEventListener("click", () => {
     if(window.getComputedStyle(dropdown).opacity === '0') {
@@ -14,3 +16,12 @@ dropdownHamburger.addEventListener("click", () => {
        dropdown.style.pointerEvents = 'none';
     }
  })
+/*
+ // search with enter.
+searchBar.addEventListener('keypress', (e) => {
+   if(e.keyCode === 13) {
+      // getting the domain name out.
+      const hostName = window.location.href.split('/')[2];
+      window.location.href = `http://${hostName}/search/${searchBar.value}`;
+   }
+})*/

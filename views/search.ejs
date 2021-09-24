@@ -36,31 +36,46 @@
             </ul>
          </div>
      </nav>
+     <!--
      <nav class="nav2">
         <div>
             <marquee>
               <h3 class="header">Welcome to Price_Tracker Website</h3>
             </marquee>
         </div>
-     </nav>
+     </nav>-->
     </nav>
-
+<!--
     <div class="main-body">
-        <h1>Recent products</h1>
-        <div class="card-container" id="card-container" >
-           <%products.forEach(product => {%>
-            <div class="product">
+        <div class="search-results" id="search-results">
+           <%searchproduct.forEach(product => {%>
               <a class="card" href="/tracking/prod/<%=product._id%>">
-                 <img src="<%=product.image%>" class="card-image">
-                 <p class="card-name"><%=product.name%></p>
-                 <p class="card-price">Price:<%=product.price_history[0].price.substring(1) %></p>
+                 <img class="product-image"  src="<%=product.image%>">
+                 <p class="product-name"><%=product.name%></p>
+                 <p class="product-price">Price:<%=product.price_history[0].price.substring(1) %></p>
               </a>
-            </div>
            <%})%>
         </div>
     </div>
+ -->  
 
-    
+    <div class="main-body">
+        <div class="search-results" id="search-results">
+           <%searchproduct.forEach(product => {%>
+              <div class="product">
+                 <a href="/tracking/prod/<%=product._id%>">
+                    <img class="product-image" src="<%=product.image%>" alt="">
+                 </a>
+                 <div class="product-description">
+                    <p class="product-name"><%=product.name%></p>
+                    <p class="product-rating">Price:<%=product.price_history[0].price.substring(1) %></p>
+                 </div>
+              </div>
+           <%})%>
+        </div>
+     </div>
+
+ 
 
       
     <script type="text/javascript" src="/js/homepage.js"></script>

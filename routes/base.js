@@ -30,6 +30,11 @@ router.get('/userEdit', (req, res) => {
 })
 
 
+router.get('/search', async (req, res) => {
+const searchproduct = await Products.find({ name: new RegExp(req.query.name, "i")});
+  //console.log(searchproduct);
+  res.json({searchproduct});
+})
 
 //********************************** */
 

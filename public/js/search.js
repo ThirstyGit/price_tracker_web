@@ -1,37 +1,39 @@
-const searchBar = document.querySelector('#search-bar');
-const cardContainer = document.querySelector('#card-container');
+const searchBar = document.querySelector("#search-bar");
+const cardContainer = document.querySelector("#card-container");
+const searchSuggestions = document.querySelector("#search-suggestions");
 
-let test;
+// Declarations.
+let timeoutId;
 
 // Fliter the products shown on the page based on the given data
 function filterProducts(datas) {
   // clear previous products.
-  while(cardContainer.firstChild) {
+  while (cardContainer.firstChild) {
     cardContainer.removeChild(cardContainer.firstChild);
   }
   // Add new products based on the given data.
-	datas = datas.searchproduct;
-  for(let i in datas) {
+  for (let i in datas) {
     // Creating elements.
-    const product = document.createElement('div');
-    const imageAnchor = document.createElement('a');
-    const productImage = document.createElement('img');
-    const productName = document.createElement('p');
-    const productPrice = document.createElement('p');
-    
+    const product = document.createElement("div");
+    const imageAnchor = document.createElement("a");
+    const productImage = document.createElement("img");
+    const productName = document.createElement("p");
+    const productPrice = document.createElement("p");
+
     // Assigning values.
     productImage.src = `${datas[i].image}`;
     imageAnchor.href = `/tracking/prod/${datas[i].id}`;
     productName.innerText = datas[i].name;
-		// Getting the most recent price.
-		const price = datas[i].price_history[datas[i].price_history.length - 1].price
+    // Getting the most recent price.
+    const price =
+      datas[i].price_history[datas[i].price_history.length - 1].price;
     productPrice.innerText = price;
 
     // Assigning classes
-    product.classList.add('product');
-    productImage.classList.add('card-image');
-    productName.classList.add('card-name');
-    productPrice.classList.add('card-price');
+    product.classList.add("product");
+    productImage.classList.add("card-image");
+    productName.classList.add("card-name");
+    productPrice.classList.add("card-price");
 
     // Appending everything properly.
     imageAnchor.appendChild(productImage);
@@ -42,21 +44,69 @@ function filterProducts(datas) {
   }
 }
 
+searchBar.addEventListener("keypress", (e) => {
+  if (e.keyCode === 13) {
+    // getting the domain name out.
+    fetch(`/search?name=${searchBar.value}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        filterProducts(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+});
 
-searchBar.addEventListener('keypress', (e) => {
-if(e.keyCode === 13) {
-  // getting the domain name out.
-  fetch(`/search?name=${searchBar.value}`)
-  .then(res => {
-    return res.json();
-  })
-  .then(data => {
-    console.log(data)
-    filterProducts(data);
-  })
-  .catch((err) => {
-    console.log(err)
-    //console.log
-  })
+// Code for showing search suggestion.
+function addSuggestion(datas) {
+  // Add suggestion for the first 10 data.
+  for (i in datas) {
+    if (i < 10) {
+      // Creating elements.
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+
+      // Assigning values.
+      a.href = `/product/${datas[i].id}`; //Need to change this.
+      a.innerText = datas[i].name;
+
+      // Appending everything properly.
+      li.appendChild(a);
+      searchSuggestions.appendChild(li);
+    }
+  }
 }
-})
+
+// Show suggestions when searching.
+searchBar.addEventListener("keyup", (e) => {
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+  }
+  // if there is no value, search suggestions need to be cleared.
+  timeoutId = setTimeout(() => {
+    if (searchBar.value === "") {
+      //  clearSuggestion();
+    }
+    // Need to make sure that enter, up, down, left,
+    // right key was not presed
+    else if (
+      e.keyCode !== 13 &&
+      e.keyCode !== 37 &&
+      e.keyCode !== 38 &&
+      e.keyCode !== 39 &&
+      e.keyCode !== 40
+    ) {
+      fetch(`/search?name=${searchBar.value}`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          // clearSuggestion();
+          addSuggestion(data);
+        });
+    }
+  }, 100);
+});

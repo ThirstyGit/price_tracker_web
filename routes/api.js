@@ -1,14 +1,16 @@
 // Importing external modules.
 const router = require('express').Router();
+
+const axios = require('axios');
+// Importing user defined modules.
+const scrap = require('../functions/scrap.js');
+const { Scrape, Monitor } = require("../database/database.js");
 let cron = require('node-cron');
 
-// Importing internal modules.
-const scrap = require('../functions/scrap.js');
-const { Scrape } = require("../database/database.js");
-
-// Necessary globals
 let startTime = 0;
 let running = false;
+let _expr = null;
+const { mail } = require('../functions/mailer');
 
 
 // Router ends
@@ -21,8 +23,11 @@ router.post('/scrap', async (req, res) => {
       // el.destroy(); Why it didn't work?
     });
     running = false;
-  }
-  const _expr = req.body.cronExpr;
+
+  } 
+  
+  _expr = req.body.cronExpr;
+
   // console.log(_expr);
   const results = await Scrape.find();
   startTime = Date.now();
@@ -30,10 +35,32 @@ router.post('/scrap', async (req, res) => {
   cron.schedule(_expr, () => {
     console.log(`scraping going on: ${new Date().toString()}`);
     results.forEach(result => {
+      
       const { url, params } = result;
-      scrap(url, params);
+      scrap(url, params, async (productData) => {
+        // console.log(`god does it work? ${productData}`);
+        productData.forEach(async (el) => {
+          // console.log(el.price);
+          const justPrice = parseFloat(el.price.replace(/[^\d.-]/g,''));
+          const monitorDB = await Monitor.find({link: url}).where('minDesiredPrice').gt(justPrice + 1);
+          // console.log(monitorDB);
+          // console.log(justPrice);
+          monitorDB.forEach(shit => {
+            mail(shit.emailTo, el.name, el.price);
+          })
+        })
+      });
+      // console.log(price);
     });
   });
+
+
+
+
+
+
+
+
   res.json({ message: 'Success' });
 });
 
@@ -47,8 +74,8 @@ router.post('/stopscraping', async (req, res) => {
       el.stop();
       // el.destroy(); Why it didn't work?
     });
-  }
-  res.json({ msg: "duh!" });
+  } 
+  res.json({msg: "duh!", _expr});
 
 
 });

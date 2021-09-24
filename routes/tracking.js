@@ -36,7 +36,8 @@ router.get('/prod/:id', async (req, res) => {
     const desiredProduct = await Products.find({_id: ID});
     const prices = desiredProduct[0].price_history.map(({price}) => parseFloat(price.replace(/[^\d.-]/g, '')));
     const times = desiredProduct[0].price_history.map(({timestamp}) => new Date(`${timestamp}`).toLocaleTimeString()); // Bloody hell timestamp!!
-    res.render('product', {title: desiredProduct[0].name, link: desiredProduct[0].link, prices, times});
+    const link = desiredProduct[0].link;
+    res.render('product', {title: desiredProduct[0].name, link: desiredProduct[0].link, prices, times, ID});
 });
 
 module.exports = router;

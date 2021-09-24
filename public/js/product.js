@@ -10,3 +10,6 @@ const closepop = () => {
     overlayDiv.classList.remove('active');
 }
 
+overlayDiv.addEventListener('click', () => {
+    closepop();
+});

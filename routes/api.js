@@ -1,3 +1,4 @@
+const loginRequired = require('../middleware/loginRequired');
 // Importing necessary modules.
 const router = require('express').Router();
 // Importing user defined modules.
@@ -7,7 +8,7 @@ let cron = require('node-cron');
 let startTime = 0;
 let running = false;
 
-router.post('/scrap', async (req, res) => {
+router.post('/scrap',loginRequired , async (req, res) => {
   let jobs = cron.getTasks();
   if (jobs.length != 0) {
     jobs.forEach((el) => {
@@ -31,7 +32,7 @@ router.post('/scrap', async (req, res) => {
   res.json({ message: 'Success' });
 });
 
-router.get('/scrap', async (req, res) => {
+router.get('/scrap',loginRequired , async (req, res) => {
   if(req.query.name) {
     const searchValue = req.query.name.replace(" ", "|");
     const data = await Scrape.find({ url: new RegExp(searchValue, "i") });
@@ -42,7 +43,7 @@ router.get('/scrap', async (req, res) => {
   }
 });
 
-router.post('/stopscraping', async (req, res) => {
+router.post('/stopscraping',loginRequired , async (req, res) => {
   running = false;
   // console.log(cron.getTasks())
   console.log(`This schedule is running for ${(Date.now() - startTime)/1000/60} minutes`);

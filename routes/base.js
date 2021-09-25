@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const { Request } = require('../database/database.js');
+const loginRequired = require('../middleware/loginRequired');
 
 /* GET home page. */
 /*router.get('/', function(req, res, next) {
@@ -11,14 +12,14 @@ const { Request } = require('../database/database.js');
 
 router.get('/', (req, res) => {
   res.render("homepage", { user: req.user });
-})
-router.get('/user', (req, res) => {
+}) 
+router.get('/user',loginRequired, (req, res) => {
   res.render('user', { user: req.user });
 })
-router.get('/userRequest', (req, res) => {
+router.get('/userRequest',loginRequired, (req, res) => {
   res.render('userRequest');
 })
-router.post('/userRequest', async (req, res) => {
+router.post('/userRequest', loginRequired, async (req, res) => {
   // console.log(req.body, req.user);
 //  const request = await Request.find({name:req.body.name });
  const request = new Request({

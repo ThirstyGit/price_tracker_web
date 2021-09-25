@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 const { Products } = require('../database/database');
 /* GET home page. */
-router.get('/', async (req, res, next) => {
+const loginRequired = require('../middleware/loginRequired');
+
+router.get('/',loginRequired , async (req, res, next) => {
 
     let currProducts = await Products.find();
     let refinedArray = [];
@@ -27,7 +29,7 @@ router.get('/', async (req, res, next) => {
     res.render('tracking', { products: refinedArray });
 });
 
-router.get('/prod/:id', async (req, res) => {
+router.get('/prod/:id',  loginRequired ,async (req, res) => {
     const ID = req.params.id;
     const desiredProduct = await Products.find({_id: ID});
     const prices = desiredProduct[0].price_history.map(({price}) => parseFloat(price.replace(/[^\d.-]/g, '')));

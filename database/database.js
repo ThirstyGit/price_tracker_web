@@ -89,7 +89,7 @@ const scrapeSchema = new mongoose.Schema({
 
 const requestSchema = new mongoose.Schema({
   user_id: {
-    type: ObjectId,
+    type: String,
     required: true,
   },
   name: {
@@ -100,15 +100,14 @@ const requestSchema = new mongoose.Schema({
     type: String,
     requried: true,
   },
-  website: {
+  link: {
     type: String,
     requried: true,
-  },
+  }
 });
-
 
 
 module.exports.User = mongoose.model("user", userSchema);
 module.exports.Products = mongoose.model("product", productSchema);
 module.exports.Scrape = mongoose.model("scrape", scrapeSchema);
-module.exports.Request = mongoose.model("scrape", requestSchema);
+module.exports.Request = mongoose.model("request", requestSchema);

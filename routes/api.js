@@ -3,7 +3,7 @@ const loginRequired = require('../middleware/loginRequired');
 const router = require('express').Router();
 // Importing user defined modules.
 const scrap = require('../functions/scrap.js');
-const { Scrape } = require("../database/database.js");
+const { Scrape, Products } = require("../database/database.js");
 let cron = require('node-cron');
 let startTime = 0;
 let running = false;
@@ -61,6 +61,15 @@ router.post('/stopscraping',loginRequired , async (req, res) => {
 
 router.post('/log', (req, res) => {
   res.json({running});
+})
+
+router.get('/allproducts', loginRequired, async (req, res) => {
+  const products = await Products.find();
+  res.json(products);
+})
+
+router.get('/userinfo', loginRequired, (req, res) => {
+  res.json({user: req.user});
 })
 
 module.exports = router;

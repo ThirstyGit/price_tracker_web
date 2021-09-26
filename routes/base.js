@@ -19,6 +19,9 @@ router.get('/user',loginRequired, (req, res) => {
 router.get('/userRequest',loginRequired, (req, res) => {
   res.render('userRequest');
 })
+
+ /*Arpita */
+   
 router.post('/userRequest', loginRequired, async (req, res) => {
   // console.log(req.body, req.user);
 //  const request = await Request.find({name:req.body.name });
@@ -31,7 +34,7 @@ router.post('/userRequest', loginRequired, async (req, res) => {
 
   request.save();
   
-  res.send('Seccess');
+  res.send('Success');
 });
 
 

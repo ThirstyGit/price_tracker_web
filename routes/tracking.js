@@ -1,11 +1,14 @@
+// Importing external modules
 var express = require('express');
-var router = express.Router();
+// Importing internal modules
 const { Products } = require('../database/database');
-/* GET home page. */
 const loginRequired = require('../middleware/loginRequired');
 
-router.get('/',loginRequired , async (req, res, next) => {
 
+var router = express.Router();
+
+// Router ends
+router.get('/', loginRequired, async (req, res, next) => {
     let currProducts = await Products.find();
     let refinedArray = [];
     currProducts.forEach(el => {
@@ -29,12 +32,15 @@ router.get('/',loginRequired , async (req, res, next) => {
     res.render('tracking', { products: refinedArray });
 });
 
+
 router.get('/prod/:id',  loginRequired ,async (req, res) => {
+// Receive ID of a specific product to show its' price history in graph
     const ID = req.params.id;
     const desiredProduct = await Products.find({_id: ID});
     const prices = desiredProduct[0].price_history.map(({price}) => parseFloat(price.replace(/[^\d.-]/g, '')));
     const times = desiredProduct[0].price_history.map(({timestamp}) => new Date(`${timestamp}`).toLocaleTimeString()); // Bloody hell timestamp!!
-    res.render('product', {title: desiredProduct[0].name, link: desiredProduct[0].link, prices, times});
+    const link = desiredProduct[0].link;
+    res.render('product', {title: desiredProduct[0].name, link: desiredProduct[0].link, prices, times, ID});
 });
 
 module.exports = router;

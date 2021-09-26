@@ -1,8 +1,11 @@
+// Importing external modules
 var express = require('express');
-var router = express.Router();
-const { Scrape } = require('../database/database');
 
+// Importing Internal modules
+const { Scrape } = require('../database/database');
 const loginRequired = require('../middleware/loginRequired');
+
+var router = express.Router();
 
 router.get("/", loginRequired, (req, res) => {
   res.render("admin");
@@ -22,7 +25,7 @@ router.delete("/deleteproduct",loginRequired, (req, res) => {
   })
   .catch(err => {
     res.json(err);
-  })
+  });
   
 });
 

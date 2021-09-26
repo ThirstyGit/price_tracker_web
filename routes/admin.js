@@ -3,22 +3,22 @@ var express = require('express');
 
 // Importing Internal modules
 const { Scrape } = require('../database/database');
+const loginRequired = require('../middleware/loginRequired');
 
 var router = express.Router();
 
-// Router ends
-router.get("/", (req, res) => {
+router.get("/", loginRequired, (req, res) => {
   res.render("admin");
 });
 
-router.post('/newproduct', (req, res) => {
+router.post('/newproduct', loginRequired, (req, res) => {
     const {url, name, price, image} = req.body;
     Scrape({url, params: {name, price, image}}).save();
     res.redirect('/admin');
 });
 
 
-router.delete("/deleteproduct", (req, res) => {
+router.delete("/deleteproduct",loginRequired, (req, res) => {
   Scrape.deleteOne({_id: req.body.id})
   .then(() => {
     res.json({message: "Deleted"});

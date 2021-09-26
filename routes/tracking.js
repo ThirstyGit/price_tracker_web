@@ -2,11 +2,13 @@
 var express = require('express');
 // Importing internal modules
 const { Products } = require('../database/database');
+const loginRequired = require('../middleware/loginRequired');
+
 
 var router = express.Router();
 
 // Router ends
-router.get('/', async (req, res, next) => {
+router.get('/', loginRequired, async (req, res, next) => {
     let currProducts = await Products.find();
     let refinedArray = [];
     currProducts.forEach(el => {
@@ -30,8 +32,9 @@ router.get('/', async (req, res, next) => {
     res.render('tracking', { products: refinedArray });
 });
 
+
+router.get('/prod/:id',  loginRequired ,async (req, res) => {
 // Receive ID of a specific product to show its' price history in graph
-router.get('/prod/:id', async (req, res) => {
     const ID = req.params.id;
     const desiredProduct = await Products.find({_id: ID});
     const prices = desiredProduct[0].price_history.map(({price}) => parseFloat(price.replace(/[^\d.-]/g, '')));

@@ -87,6 +87,26 @@ const scrapeSchema = new mongoose.Schema({
   }
 });
 
+
+const requestSchema = new mongoose.Schema({
+  user_id: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  website: {
+    type: String,
+    requried: true,
+  },
+  link: {
+    type: String,
+    requried: true,
+  }
+});
+
 const monitorSchema = new mongoose.Schema({
   productID: {
     type: String,
@@ -117,4 +137,6 @@ const monitorSchema = new mongoose.Schema({
 module.exports.User = mongoose.model("user", userSchema);
 module.exports.Products = mongoose.model("product", productSchema);
 module.exports.Scrape = mongoose.model("scrape", scrapeSchema);
+module.exports.Request = mongoose.model("request", requestSchema);
 module.exports.Monitor = mongoose.model("monitor", monitorSchema);
+

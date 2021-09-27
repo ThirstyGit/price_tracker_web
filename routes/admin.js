@@ -32,4 +32,12 @@ router.delete("/deleteproduct",loginRequired, (req, res) => {
 });
 
 
+router.post('/request/delete', async (req, res) => {
+  // Request.deleteOne();
+  console.log('here');
+  console.log(req.query.id);
+  res.send('');
+});
+
+
 module.exports = router;

@@ -9,6 +9,8 @@ const stopBtn = document.querySelector("#stop-scrap-btn");
 const hourOrMin = document.querySelector("#hour-or-minute");
 const quantity = document.querySelector("#quantity");
 const status = document.querySelector("#status");
+const requestBtns = document.querySelectorAll('.request-btn');
+
 
 // All necessary globals
 const _interval = 2000; // to check if scraping if running.
@@ -137,3 +139,13 @@ setInterval(() => {
       }
     });
 }, _interval);
+
+// Events for handling requests.
+requestBtns.forEach(requestBtn => {
+  requestBtn.addEventListener('click', (e) => {
+    fetch(`/admin/request/delete?id=${requestBtn.value}`, {
+      method: 'POST'
+    });
+  })
+})
+

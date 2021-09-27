@@ -146,7 +146,12 @@ requestBtns.forEach(requestBtn => {
   requestBtn.addEventListener('click', (e) => {
     fetch(`/admin/request/delete?id=${requestBtn.value.split(' ')[0]}`, {
       method: 'POST'
-    });
+    })
+    .then(res => {
+      // Removing the whole element from DOM.
+      requestBtn.parentElement.parentElement.removeChild(requestBtn.parentElement)
+    })
+    .catch(err => console.error(err));
   })
 })
 

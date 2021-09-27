@@ -26,7 +26,7 @@
         <form class="form" action="/admin/newproduct" method="POST">
           <legend class="legend">New Product to track</legend>
           <hr class="hr-full-width">
-          <input class="input" type="text" name="url" placeholder="url">
+          <input class="input" type="text" name="url" id="new-product-url" placeholder="url">
           <input class="input" type="text" name="name" placeholder="Name Selector">
           <input class="input" type="text" name="price" placeholder="Price Selector">
           <input class="input" type="text" name="image" placeholder="Image Selector">
@@ -43,7 +43,7 @@
         </div>
       </div>
       <!-- For showing users request. -->
-      <div class="main-element">
+      <div class="main-element hidden">
         <div class="form-output-container" id="form-output-container">
           <!-- Heading -->
           <div class="form-output">
@@ -63,7 +63,7 @@
               <p class="form-output-value">
                 <%= request.link %>
               </p>
-              <button class="request-btn btn" value=<%=request._id%>>Accept</button>
+              <button class="request-btn request-btn-accept btn" value='<%=request._id%> <%=request.link%>'>Accept</button>
               <button class="request-btn btn-danger" value=<%=request._id%>>Reject</button>
             </div>
           <% }) %>

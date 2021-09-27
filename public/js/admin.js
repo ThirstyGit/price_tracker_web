@@ -9,6 +9,9 @@ const stopBtn = document.querySelector("#stop-scrap-btn");
 const hourOrMin = document.querySelector("#hour-or-minute");
 const quantity = document.querySelector("#quantity");
 const status = document.querySelector("#status");
+const requestBtns = document.querySelectorAll('.request-btn');
+const requestBtnsAccept = document.querySelectorAll('.request-btn-accept');
+const newProductUrl = document.querySelector('#new-product-url');
 
 // All necessary globals
 const _interval = 2000; // to check if scraping if running.
@@ -137,3 +140,26 @@ setInterval(() => {
       }
     });
 }, _interval);
+
+// Events for handling requests.
+requestBtns.forEach(requestBtn => {
+  requestBtn.addEventListener('click', (e) => {
+    fetch(`/admin/request/delete?id=${requestBtn.value.split(' ')[0]}`, {
+      method: 'POST'
+    })
+    .then(res => {
+      // Removing the whole element from DOM.
+      requestBtn.parentElement.parentElement.removeChild(requestBtn.parentElement)
+    })
+    .catch(err => console.error(err));
+  })
+})
+
+requestBtnsAccept.forEach(requestBtnAccept => {
+  requestBtnAccept.addEventListener('click', e => {
+    mainElement[0].classList.remove('hidden')
+    mainElement[2].classList.add('hidden')
+    newProductUrl.value = requestBtnAccept.value.split(' ')[1];
+  });
+})
+

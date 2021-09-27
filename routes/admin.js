@@ -4,11 +4,13 @@ var express = require('express');
 // Importing Internal modules
 const { Scrape } = require('../database/database');
 const loginRequired = require('../middleware/loginRequired');
+const { Request } = require('../database/database')
 
 var router = express.Router();
 
-router.get("/", loginRequired, (req, res) => {
-  res.render("admin");
+router.get("/", async (req, res) => {
+  const requests = await Request.find();
+  res.render("admin", {requests});
 });
 
 router.post('/newproduct', loginRequired, (req, res) => {
@@ -16,7 +18,6 @@ router.post('/newproduct', loginRequired, (req, res) => {
     Scrape({url, params: {name, price, image}}).save();
     res.redirect('/admin');
 });
-
 
 router.delete("/deleteproduct",loginRequired, (req, res) => {
   Scrape.deleteOne({_id: req.body.id})
@@ -27,6 +28,16 @@ router.delete("/deleteproduct",loginRequired, (req, res) => {
     res.json(err);
   });
   
+});
+
+router.post('/request/delete', async (req, res) => {
+  try {
+    await Request.deleteOne({_id: req.query.id});
+    res.json({message: 'Success'});
+  }
+  catch(err) {
+    req.json({message: err});
+  }
 });
 
 

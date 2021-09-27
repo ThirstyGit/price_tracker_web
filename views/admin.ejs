@@ -18,6 +18,7 @@
     <nav class="sidebar">
       <a class="sidebar-anchor">Add New Product</a>
       <a class="sidebar-anchor">Delete Product</a>
+      <a class="sidebar-anchor">Product Requests</a>
       <a class="sidebar-anchor">Scrap</a>
     </nav>
     <div class="main">
@@ -25,7 +26,7 @@
         <form class="form" action="/admin/newproduct" method="POST">
           <legend class="legend">New Product to track</legend>
           <hr class="hr-full-width">
-          <input class="input" type="text" name="url" placeholder="url">
+          <input class="input" type="text" name="url" id="new-product-url" placeholder="url">
           <input class="input" type="text" name="name" placeholder="Name Selector">
           <input class="input" type="text" name="price" placeholder="Price Selector">
           <input class="input" type="text" name="image" placeholder="Image Selector">
@@ -39,6 +40,33 @@
         </form>
         <div class="form-output-container hidden" id="form-output-container">
 
+        </div>
+      </div>
+      <!-- For showing users request. -->
+      <div class="main-element hidden">
+        <div class="form-output-container" id="form-output-container">
+          <!-- Heading -->
+          <div class="form-output">
+            <p class="form-output-value">
+              User Requests
+            </p>
+          </div>
+          <% requests.forEach(request => { %>
+            <!-- Showing all the requests. -->
+            <div class="request-form">
+              <p class="form-output-value">
+                <%= request.name %>
+              </p>
+              <p class="form-output-value">
+                <%= request.website %>
+              </p>
+              <p class="form-output-value">
+                <%= request.link %>
+              </p>
+              <button class="request-btn request-btn-accept btn" value='<%=request._id%> <%=request.link%>'>Accept</button>
+              <button class="request-btn btn-danger" value=<%=request._id%>>Reject</button>
+            </div>
+          <% }) %>
         </div>
       </div>
       <div class="main-element hidden" id="scrap">

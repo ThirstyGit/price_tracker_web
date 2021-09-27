@@ -19,7 +19,6 @@ router.post('/newproduct', loginRequired, (req, res) => {
     res.redirect('/admin');
 });
 
-
 router.delete("/deleteproduct",loginRequired, (req, res) => {
   Scrape.deleteOne({_id: req.body.id})
   .then(() => {
@@ -31,12 +30,14 @@ router.delete("/deleteproduct",loginRequired, (req, res) => {
   
 });
 
-
 router.post('/request/delete', async (req, res) => {
-  // Request.deleteOne();
-  console.log('here');
-  console.log(req.query.id);
-  res.send('');
+  try {
+    await Request.deleteOne({_id: req.query.id});
+    res.json({message: 'Success'});
+  }
+  catch(err) {
+    req.json({message: err});
+  }
 });
 
 

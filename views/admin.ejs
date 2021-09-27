@@ -18,6 +18,7 @@
     <nav class="sidebar">
       <a class="sidebar-anchor">Add New Product</a>
       <a class="sidebar-anchor">Delete Product</a>
+      <a class="sidebar-anchor">Product Requests</a>
       <a class="sidebar-anchor">Scrap</a>
     </nav>
     <div class="main">
@@ -39,6 +40,33 @@
         </form>
         <div class="form-output-container hidden" id="form-output-container">
 
+        </div>
+      </div>
+      <!-- For showing users request. -->
+      <div class="main-element">
+        <div class="form-output-container" id="form-output-container">
+          <!-- Heading -->
+          <div class="form-output">
+            <p class="form-output-value">
+              User Requests
+            </p>
+          </div>
+          <% requests.forEach(request => { %>
+            <!-- Showing all the requests. -->
+            <div class="request-form">
+              <p class="form-output-value">
+                <%= request.name %>
+              </p>
+              <p class="form-output-value">
+                <%= request.website %>
+              </p>
+              <p class="form-output-value">
+                <%= request.link %>
+              </p>
+              <button class="btn">Accept</button>
+              <button class="btn-danger">Reject</button>
+            </div>
+          <% }) %>
         </div>
       </div>
       <div class="main-element hidden" id="scrap">

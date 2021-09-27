@@ -4,11 +4,13 @@ var express = require('express');
 // Importing Internal modules
 const { Scrape } = require('../database/database');
 const loginRequired = require('../middleware/loginRequired');
+const { Request } = require('../database/database')
 
 var router = express.Router();
 
-router.get("/", loginRequired, (req, res) => {
-  res.render("admin");
+router.get("/", async (req, res) => {
+  const requests = await Request.find();
+  res.render("admin", {requests});
 });
 
 router.post('/newproduct', loginRequired, (req, res) => {

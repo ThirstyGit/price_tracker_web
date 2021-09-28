@@ -25,7 +25,6 @@
             <ul id="dropdown" class="dropdown">
                <%if(user) {%>
                   <li><a class="dc-anchor" href="/user">Profile</a></li>
-                  <li><a class="dc-anchor" href="/admin">Admin Panel</a></li>
                   <%if(user.type === 'admin') {%>
                      <li><a class="dc-anchor" href="/admin">Admin Panel</a></li>
                   <%}%>

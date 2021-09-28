@@ -5,9 +5,11 @@ const bcrypt = require("bcrypt");
 // Importing database modules.
 const { User } = require('../database/database.js');
 
+
 router.get('/register', (req, res) => {
   res.render('register');
 })
+
 
 router.post("/register", async (req, res) => {
   // Making sure the email is not already registered.
@@ -52,6 +54,11 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get('/userRequest', (req, res) => {
+  res.render('userRequest');
+})
+
+
 router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
@@ -60,5 +67,7 @@ router.get("/logout", (req, res) => {
     res.redirect("/");
   });
 });
+
+
 
 module.exports = router;

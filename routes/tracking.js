@@ -8,7 +8,7 @@ const loginRequired = require('../middleware/loginRequired');
 var router = express.Router();
 
 // Router ends
-router.get('/', loginRequired, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     let currProducts = await Products.find();
     let refinedArray = [];
     currProducts.forEach(el => {
@@ -33,7 +33,7 @@ router.get('/', loginRequired, async (req, res, next) => {
 });
 
 
-router.get('/prod/:id',  loginRequired ,async (req, res) => {
+router.get('/prod/:id',async (req, res) => {
 // Receive ID of a specific product to show its' price history in graph
     const ID = req.params.id;
     const desiredProduct = await Products.find({_id: ID});

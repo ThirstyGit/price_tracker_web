@@ -49,7 +49,7 @@ router.get("/userEdit", (req, res) => {
   res.render("userEdit", { user: req.user });
 });
 
-router.get("/search", async (req, res) => {
+router.get("/search",async (req, res) => {
   const searchproduct = await Products.find({
     name: new RegExp(req.query.name, "i"),
   });
@@ -58,7 +58,7 @@ router.get("/search", async (req, res) => {
 
 //********************************** */
 
-router.put("/userEditInfo", async (req, res) => {
+router.put("/userEditInfo",loginRequired, async (req, res) => {
   const user = await User.findOneAndUpdate(
     { _id: req.user._id },
     { $set: { name: req.body.name, email: req.body.email } }
@@ -68,7 +68,7 @@ router.put("/userEditInfo", async (req, res) => {
   res.send("");
 });
 
-router.put("/changepassword", async (req, res) => {
+router.put("/changepassword", loginRequired, async (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, 14);
   const user = await User.findOneAndUpdate(
     { _id: req.user._id },

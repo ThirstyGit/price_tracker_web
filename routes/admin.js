@@ -8,7 +8,7 @@ const { Request } = require('../database/database')
 
 var router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", loginRequired, async (req, res) => {
   const requests = await Request.find();
   res.render("admin", {requests});
 });
@@ -30,7 +30,7 @@ router.delete("/deleteproduct",loginRequired, (req, res) => {
   
 });
 
-router.post('/request/delete', async (req, res) => {
+router.post('/request/delete', loginRequired, async (req, res) => {
   try {
     await Request.deleteOne({_id: req.query.id});
     res.json({message: 'Success'});

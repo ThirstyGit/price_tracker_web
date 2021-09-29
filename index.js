@@ -40,6 +40,8 @@ app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/images', express.static(__dirname + '/public/images'));
 app.use('/favicon.ico', express.static(__dirname + '/favicon.ico'));
+// Showing favicon.
+app.use("/favicon.ico", express.static(__dirname + "/favicon.ico"));
 app.set('view engine', 'ejs');
 
 // All routes for our website.

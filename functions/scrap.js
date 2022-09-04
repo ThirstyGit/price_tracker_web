@@ -1,7 +1,6 @@
-const cheerio = require('cheerio');
-const axios = require('axios');
+const cheerio = require("cheerio");
+const axios = require("axios");
 const { Products } = require("../database/database.js");
-const { data } = require('cheerio/lib/api/attributes');
 
 async function scrap(url, params, cb) {
   // Requesting the page and loading it to cheerio.
@@ -32,8 +31,8 @@ async function scrap(url, params, cb) {
 
   // If there is only one image that is used for every product.
   productData.forEach((product) => {
-    if(!product.image) {
-      product['image'] = productData[0].image;
+    if (!product.image) {
+      product["image"] = productData[0].image;
     }
   });
 
@@ -63,12 +62,13 @@ async function scrap(url, params, cb) {
               price: data.price,
             },
           ],
-        }).save()
-        .catch(err => {
-          // Do Nothing right now. This just prevents showing error
-          // when could not get price data because the class is 
-          // different for sales.
-        });
+        })
+          .save()
+          .catch((err) => {
+            // Do Nothing right now. This just prevents showing error
+            // when could not get price data because the class is
+            // different for sales.
+          });
       }
     });
   }
@@ -76,6 +76,6 @@ async function scrap(url, params, cb) {
   // Running any callback if passed.
   if (cb) cb(productData);
   // return data.price;
-};
+}
 
 module.exports = scrap;
